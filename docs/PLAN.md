@@ -6,7 +6,9 @@
 |---|---|
 | Platform | Web app / PWA, installable on phone home screen, works offline |
 | Card art | Cropped from the printed sheets in `source-sheets/`, with rounded corners like real playing cards |
-| Sessions | Pick one or more categories (or All); show due cards first, then up to a daily limit of new cards |
+| Sessions | Pick one or more categories (or All); review the cards that are due. New cards are only introduced when the user chooses to add them (no automatic daily limit) |
+| Interface language | English by default, switchable to French (prompts, buttons, menus) |
+| Grade buttons | Forgot / Hard / Good / Easy (FR: Oublié / Difficile / Bien / Facile), each showing when the card would come back, e.g. "Good · 3 days" |
 | Directions | French → English and English → French scheduled separately (144 cards × 2 = 288 review items) |
 | Scheduler | FSRS (four grades: Forgot / Hard / Good / Easy) |
 | Storage | On the device (IndexedDB); sync can come later |
@@ -28,8 +30,15 @@ Taps are ignored while an animation is running.
 ## Special cards
 
 - E → 饿 and U → 鱼 (`answerLanguage: "zh"`): normal flip cards; shown as the prompt in English → French.
-- Eu (Mathieu): answer is a pronunciation hint, so French → English only.
+- Pronunciation cards (`type: "pronunciation"`, `directions: ["fr-en"]`): cards that only represent a sound
+  — Eu (Mathieu), A, E, I, O, U, Ou, Oi, Au, ~eau. French → English only, shown with a
+  "Pronunciation" / "Prononciation" badge. Eau (Water) is a real word, so it stays a normal card.
 - Duplicates across categories stay separate cards.
+
+## Adding new cards
+
+The home and category screens show how many cards haven't been studied yet, with an
+"Add new cards" control where the user picks how many to introduce. Only added cards are scheduled.
 
 ## Advanced mode: typed answers
 
@@ -46,4 +55,4 @@ Taps are ignored while an animation is running.
 3. Session flow, grade buttons, FSRS scheduling.
 4. Home and category screens; save progress on the device.
 5. Typing mode.
-6. Polish: sounds, haptics, settings (daily new-card limit).
+6. Polish: sounds, haptics, interface-language setting.
