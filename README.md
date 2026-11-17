@@ -22,7 +22,5 @@ French flashcard app.
 
 - `source-sheets/`: the high-res print sheets (`Front_*.png` = text side,
   `Back_*.png` = illustration). `Front_TEMPLATE.png` is the blank layout and isn't used.
-- `source-sheets/lowres-clean-backs/`: earlier low-res back art without the
-  position numbers, used to clean the high-res backs.
 - `assets/cards/<id>.webp` and `assets/backs/<category>.webp`: individual cards with
   rounded corners, produced by `python3 tools/crop_cards.py`.

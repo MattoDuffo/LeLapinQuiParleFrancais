@@ -3,8 +3,6 @@
 Card boxes are detected on each sheet's back image (the illustrated cards have
 clear edges) and reused for the front image, which is printed on the same grid.
 Every card is saved with rounded transparent corners like a real playing card.
-The high-res back sheets have position numbers printed over the art; see
-clean_back.py for how those are removed.
 
 Usage: python3 tools/crop_cards.py
 """
@@ -14,15 +12,13 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
 
-from clean_back import clean_back
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "cards.json"
 OUT_FRONT = ROOT / "assets" / "cards"
 OUT_BACK = ROOT / "assets" / "backs"
 CORNER_RATIO = 0.06  # corner radius as a fraction of card width
-INSET = 12  # px trimmed from every edge: removes the green print-guide line on the backs
-LOWRES_BACKS = ROOT / "source-sheets" / "lowres-clean-backs"
+INSET = 2  # px trimmed from every edge to drop the soft anti-aliased border
 
 
 def runs(idx):
@@ -36,7 +32,7 @@ def runs(idx):
     return out
 
 
-def card_boxes(back_path, inset_scale=1.0):
+def card_boxes(back_path):
     a = np.asarray(Image.open(back_path).convert("RGB")).astype(int)
     diff = np.abs(a - a[5, 5]).sum(2) > 40
     cols = [r for r in runs(np.where(diff.mean(0) > 0.05)[0]) if r[1] - r[0] > 100]
@@ -45,8 +41,7 @@ def card_boxes(back_path, inset_scale=1.0):
     # Use one common card size so every card image is identical in size.
     w = max(c[1] - c[0] for c in cols) + 1
     h = max(r[1] - r[0] for r in rows) + 1
-    i = round(INSET * inset_scale)
-    return {(ri + 1, ci + 1): (c[0] + i, r[0] + i, c[0] + w - i, r[0] + h - i)
+    return {(ri + 1, ci + 1): (c[0] + INSET, r[0] + INSET, c[0] + w - INSET, r[0] + h - INSET)
             for ri, r in enumerate(rows) for ci, c in enumerate(cols)}
 
 
@@ -69,7 +64,7 @@ def main():
         b = card_boxes(ROOT / sheet["back"])
         boxes[sheet["sheet"]] = b
         if sheet["category"] not in backs_done:
-            back, _ = clean_back(ROOT / sheet["back"], LOWRES_BACKS / f"{sheet['category']}.webp")
+            back = Image.open(ROOT / sheet["back"]).crop(b[(1, 1)])
             rounded(back).save(OUT_BACK / f"{sheet['category']}.webp", quality=90, method=6)
             backs_done.add(sheet["category"])
         sheet["backImage"] = f"assets/backs/{sheet['category']}.webp"
