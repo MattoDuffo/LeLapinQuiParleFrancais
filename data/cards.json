@@ -36,6 +36,22 @@
       "provisionalCategory": "Conjugaison : Être, Avoir, Manger (présent)",
       "front": "source-sheets/batch2-sheetD-front.webp",
       "back": "source-sheets/batch2-sheetD-back.webp"
+    },
+    {
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "provisionalCategory": "Conjugaison : Faire (présent), Avoir & Être (imparfait)",
+      "front": "source-sheets/batch3-sheetE-front.webp",
+      "back": "source-sheets/batch3-sheetE-back.webp"
+    },
+    {
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "provisionalCategory": "Conjugaison : Boire (présent), Avoir & Être (futur)",
+      "front": "source-sheets/batch3-sheetF-front.webp",
+      "back": "source-sheets/batch3-sheetF-back.webp"
     }
   ],
   "cards": [
@@ -758,6 +774,366 @@
       "col": 6,
       "french": "Ils/Elles mangent (Manger)",
       "english": "They eat"
+    },
+    {
+      "id": "E-r1c1",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 1,
+      "col": 1,
+      "french": "Je fais (Faire)",
+      "english": "I do"
+    },
+    {
+      "id": "E-r1c2",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 1,
+      "col": 2,
+      "french": "Tu fais (Faire)",
+      "english": "You do"
+    },
+    {
+      "id": "E-r1c3",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 1,
+      "col": 3,
+      "french": "Il fait (Faire)",
+      "english": "He/She does"
+    },
+    {
+      "id": "E-r1c4",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 1,
+      "col": 4,
+      "french": "Nous faisons (Faire)",
+      "english": "We do"
+    },
+    {
+      "id": "E-r1c5",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 1,
+      "col": 5,
+      "french": "Vous faites (Faire)",
+      "english": "You do"
+    },
+    {
+      "id": "E-r1c6",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 1,
+      "col": 6,
+      "french": "Ils/Elles font (Faire)",
+      "english": "They do"
+    },
+    {
+      "id": "E-r2c1",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 2,
+      "col": 1,
+      "french": "J'avais (Avoir)",
+      "english": "I had"
+    },
+    {
+      "id": "E-r2c2",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 2,
+      "col": 2,
+      "french": "Tu avais (Avoir)",
+      "english": "You had"
+    },
+    {
+      "id": "E-r2c3",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 2,
+      "col": 3,
+      "french": "Il/Elle avait (Avoir)",
+      "english": "He/She had"
+    },
+    {
+      "id": "E-r2c4",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 2,
+      "col": 4,
+      "french": "Nous avions (Avoir)",
+      "english": "We had"
+    },
+    {
+      "id": "E-r2c5",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 2,
+      "col": 5,
+      "french": "Vous aviez (Avoir)",
+      "english": "You had"
+    },
+    {
+      "id": "E-r2c6",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 2,
+      "col": 6,
+      "french": "Ils/Elles avaient (Avoir)",
+      "english": "They had"
+    },
+    {
+      "id": "E-r3c1",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 3,
+      "col": 1,
+      "french": "J'étais (Être)",
+      "english": "I was"
+    },
+    {
+      "id": "E-r3c2",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 3,
+      "col": 2,
+      "french": "Tu étais (Être)",
+      "english": "You were"
+    },
+    {
+      "id": "E-r3c3",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 3,
+      "col": 3,
+      "french": "Il/Elle était (Être)",
+      "english": "He/She was"
+    },
+    {
+      "id": "E-r3c4",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 3,
+      "col": 4,
+      "french": "Nous étions (Être)",
+      "english": "We were"
+    },
+    {
+      "id": "E-r3c5",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 3,
+      "col": 5,
+      "french": "Vous étiez (Être)",
+      "english": "You were"
+    },
+    {
+      "id": "E-r3c6",
+      "sheet": "E",
+      "category": "PENDING_E",
+      "page": null,
+      "row": 3,
+      "col": 6,
+      "french": "Ils/Elles étaient (Être)",
+      "english": "They were"
+    },
+    {
+      "id": "F-r1c1",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 1,
+      "col": 1,
+      "french": "Je bois (Boire)",
+      "english": "I drink"
+    },
+    {
+      "id": "F-r1c2",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 1,
+      "col": 2,
+      "french": "Tu bois (Boire)",
+      "english": "You drink"
+    },
+    {
+      "id": "F-r1c3",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 1,
+      "col": 3,
+      "french": "Il boit (Boire)",
+      "english": "He/She drinks"
+    },
+    {
+      "id": "F-r1c4",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 1,
+      "col": 4,
+      "french": "Nous buvons (Boire)",
+      "english": "We drink"
+    },
+    {
+      "id": "F-r1c5",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 1,
+      "col": 5,
+      "french": "Vous buvez (Boire)",
+      "english": "You drink"
+    },
+    {
+      "id": "F-r1c6",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 1,
+      "col": 6,
+      "french": "Ils/Elles boivent (Boire)",
+      "english": "They drink"
+    },
+    {
+      "id": "F-r2c1",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 2,
+      "col": 1,
+      "french": "J'aurai (Avoir)",
+      "english": "I will have"
+    },
+    {
+      "id": "F-r2c2",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 2,
+      "col": 2,
+      "french": "Tu auras (Avoir)",
+      "english": "You will have"
+    },
+    {
+      "id": "F-r2c3",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 2,
+      "col": 3,
+      "french": "Il/Elle aura (Avoir)",
+      "english": "He/She will have"
+    },
+    {
+      "id": "F-r2c4",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 2,
+      "col": 4,
+      "french": "Nous aurons (Avoir)",
+      "english": "We will have"
+    },
+    {
+      "id": "F-r2c5",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 2,
+      "col": 5,
+      "french": "Vous aurez (Avoir)",
+      "english": "You will have"
+    },
+    {
+      "id": "F-r2c6",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 2,
+      "col": 6,
+      "french": "Ils/Elles auront (Avoir)",
+      "english": "They will have"
+    },
+    {
+      "id": "F-r3c1",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 3,
+      "col": 1,
+      "french": "Je serai (Être)",
+      "english": "I will be"
+    },
+    {
+      "id": "F-r3c2",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 3,
+      "col": 2,
+      "french": "Tu seras (Être)",
+      "english": "You will be"
+    },
+    {
+      "id": "F-r3c3",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 3,
+      "col": 3,
+      "french": "Il/Elle sera (Être)",
+      "english": "He/She will be"
+    },
+    {
+      "id": "F-r3c4",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 3,
+      "col": 4,
+      "french": "Nous serons (Être)",
+      "english": "We will be"
+    },
+    {
+      "id": "F-r3c5",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 3,
+      "col": 5,
+      "french": "Vous serez (Être)",
+      "english": "You will be"
+    },
+    {
+      "id": "F-r3c6",
+      "sheet": "F",
+      "category": "PENDING_F",
+      "page": null,
+      "row": 3,
+      "col": 6,
+      "french": "Ils/Elles seront (Être)",
+      "english": "They will be"
     }
   ]
 }
