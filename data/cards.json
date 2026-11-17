@@ -826,7 +826,7 @@
       "page": 2,
       "row": 1,
       "col": 3,
-      "french": "Il fait (Faire)",
+      "french": "Il/Elle fait (Faire)",
       "english": "He/She does"
     },
     {
@@ -1006,7 +1006,7 @@
       "page": 3,
       "row": 1,
       "col": 3,
-      "french": "Il boit (Boire)",
+      "french": "Il/Elle boit (Boire)",
       "english": "He/She drinks"
     },
     {
@@ -1242,8 +1242,7 @@
       "row": 2,
       "col": 2,
       "french": "Oi",
-      "english": "Wooa",
-      "note": "Upside-down handwriting; read as 'Wooa' (back art says oi → \"wooah!\") - please confirm"
+      "english": "Wooa"
     },
     {
       "id": "G-r2c3",
