@@ -7,5 +7,7 @@ French flashcard app data.
   and sometimes `note` / `answerLanguage`.
 - `source-sheets/`: the original front (text) and back (illustration) sheet images.
 
-`category` and `page` come from the original sheet file names; sheets whose names
-haven't been recorded yet carry a `PENDING_*` category and a `null` page.
+`category` and `page` were reconstructed from the back illustration of each sheet
+(sheets sharing a back art = same category; page order = upload order), because the
+original file names were not available. Categories: `son-ay`, `accents`, `nasales`,
+`verbes` (pages 1-3), `voyelles` (pages 1-2).
