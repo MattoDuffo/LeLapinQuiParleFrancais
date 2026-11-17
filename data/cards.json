@@ -1,0 +1,387 @@
+{
+  "layout": {
+    "rows": 3,
+    "cols": 6,
+    "cardsPerSheet": 18
+  },
+  "sheets": [
+    {
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "provisionalCategory": "Le son « ay » (et, ez, er, ai, é, ées)",
+      "front": "source-sheets/batch1-sheetA-front.webp",
+      "back": "source-sheets/batch1-sheetA-back.webp"
+    },
+    {
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "provisionalCategory": "Les accents é / è / ê / ë",
+      "front": "source-sheets/batch1-sheetB-front.webp",
+      "back": "source-sheets/batch1-sheetB-back.webp"
+    }
+  ],
+  "cards": [
+    {
+      "id": "A-r1c1",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 1,
+      "col": 1,
+      "french": "J'ai",
+      "english": "I have"
+    },
+    {
+      "id": "A-r1c2",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 1,
+      "col": 2,
+      "french": "Et",
+      "english": "And"
+    },
+    {
+      "id": "A-r1c3",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 1,
+      "col": 3,
+      "french": "Vous mangez",
+      "english": "You eat (Plural)"
+    },
+    {
+      "id": "A-r1c4",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 1,
+      "col": 4,
+      "french": "Manger",
+      "english": "To eat"
+    },
+    {
+      "id": "A-r1c5",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 1,
+      "col": 5,
+      "french": "Je mangerai",
+      "english": "I will eat"
+    },
+    {
+      "id": "A-r1c6",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 1,
+      "col": 6,
+      "french": "J'ai mangé",
+      "english": "I ate"
+    },
+    {
+      "id": "A-r2c1",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 2,
+      "col": 1,
+      "french": "Télévision",
+      "english": "Television"
+    },
+    {
+      "id": "A-r2c2",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 2,
+      "col": 2,
+      "french": "Laver",
+      "english": "To wash"
+    },
+    {
+      "id": "A-r2c3",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 2,
+      "col": 3,
+      "french": "Lavées",
+      "english": "Washed (Plural, Fem)"
+    },
+    {
+      "id": "A-r2c4",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 2,
+      "col": 4,
+      "french": "Lavés",
+      "english": "Washed (Plural)"
+    },
+    {
+      "id": "A-r2c5",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 2,
+      "col": 5,
+      "french": "Lavée",
+      "english": "Washed (Fem)"
+    },
+    {
+      "id": "A-r2c6",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 2,
+      "col": 6,
+      "french": "Lavé",
+      "english": "Washed (Masc)"
+    },
+    {
+      "id": "A-r3c1",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 3,
+      "col": 1,
+      "french": "Déjeuner",
+      "english": "Breakfast"
+    },
+    {
+      "id": "A-r3c2",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 3,
+      "col": 2,
+      "french": "Préféré",
+      "english": "Preferred"
+    },
+    {
+      "id": "A-r3c3",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 3,
+      "col": 3,
+      "french": "Répéter",
+      "english": "To repeat"
+    },
+    {
+      "id": "A-r3c4",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 3,
+      "col": 4,
+      "french": "Acheter",
+      "english": "To buy"
+    },
+    {
+      "id": "A-r3c5",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 3,
+      "col": 5,
+      "french": "Payer",
+      "english": "To pay"
+    },
+    {
+      "id": "A-r3c6",
+      "sheet": "A",
+      "category": "PENDING_A",
+      "page": null,
+      "row": 3,
+      "col": 6,
+      "french": "Désolé",
+      "english": "Apologies"
+    },
+    {
+      "id": "B-r1c1",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 1,
+      "col": 1,
+      "french": "Fête",
+      "english": "Celebration, Birthday"
+    },
+    {
+      "id": "B-r1c2",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 1,
+      "col": 2,
+      "french": "Bête",
+      "english": "Dumb, Beast"
+    },
+    {
+      "id": "B-r1c3",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 1,
+      "col": 3,
+      "french": "Tête",
+      "english": "Head"
+    },
+    {
+      "id": "B-r1c4",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 1,
+      "col": 4,
+      "french": "Être",
+      "english": "To be"
+    },
+    {
+      "id": "B-r1c5",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 1,
+      "col": 5,
+      "french": "Prêt",
+      "english": "Ready"
+    },
+    {
+      "id": "B-r1c6",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 1,
+      "col": 6,
+      "french": "Noël",
+      "english": "Christmas"
+    },
+    {
+      "id": "B-r2c1",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 2,
+      "col": 1,
+      "french": "Père",
+      "english": "Father"
+    },
+    {
+      "id": "B-r2c2",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 2,
+      "col": 2,
+      "french": "Mère",
+      "english": "Mother"
+    },
+    {
+      "id": "B-r2c3",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 2,
+      "col": 3,
+      "french": "Frère",
+      "english": "Brother"
+    },
+    {
+      "id": "B-r2c4",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 2,
+      "col": 4,
+      "french": "Près",
+      "english": "Near"
+    },
+    {
+      "id": "B-r2c5",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 2,
+      "col": 5,
+      "french": "Après",
+      "english": "After"
+    },
+    {
+      "id": "B-r2c6",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 2,
+      "col": 6,
+      "french": "Bière",
+      "english": "Beer"
+    },
+    {
+      "id": "B-r3c1",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 3,
+      "col": 1,
+      "french": "Fièvre",
+      "english": "Fever"
+    },
+    {
+      "id": "B-r3c2",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 3,
+      "col": 2,
+      "french": "Lèvre",
+      "english": "Lip"
+    },
+    {
+      "id": "B-r3c3",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 3,
+      "col": 3,
+      "french": "Très",
+      "english": "Very"
+    },
+    {
+      "id": "B-r3c4",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 3,
+      "col": 4,
+      "french": "Café",
+      "english": "Coffee"
+    },
+    {
+      "id": "B-r3c5",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 3,
+      "col": 5,
+      "french": "Santé",
+      "english": "Cheers! (Health)"
+    },
+    {
+      "id": "B-r3c6",
+      "sheet": "B",
+      "category": "PENDING_B",
+      "page": null,
+      "row": 3,
+      "col": 6,
+      "french": "Été",
+      "english": "Summer"
+    }
+  ]
+}
