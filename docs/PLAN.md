@@ -14,7 +14,10 @@
 | Storage | On the device (IndexedDB), with Export / Import to a file as a backup; sync can come later |
 | Session direction | French → English, English → French, or Mixed (random direction per card) |
 | Tech | Vite + TypeScript, FSRS via the open-source `ts-fsrs` library |
-| Hosting | GitHub Pages if the plan allows it for this private repo; otherwise Netlify or Cloudflare Pages (HTTPS is required) |
+| Hosting | GitHub Pages; the repo will be made public. A GitHub Action publishes the app whenever `main` changes |
+| App name / icon | "Le Lapin" under the home-screen icon; the icon is the bunny cropped from the card art |
+| Speech | French is read aloud with the iPhone's built-in French voice: on by default when the French side appears, can be turned off in settings; a speaker button replays it |
+| Workflow | All work goes straight to `main`; no pull requests |
 
 ## Card screen
 
@@ -83,7 +86,7 @@ New cards are added in sheet order (row by row) within the chosen categories.
 3. Session flow, grade buttons, FSRS scheduling.
 4. Home and category screens; save progress on the device.
 5. Typing mode.
-6. Polish: sounds, interface-language setting, statistics, Export / Import.
+6. Polish: sounds, French speech (auto-play setting + replay button), interface-language setting, statistics, Export / Import.
 7. iPhone install: icon, manifest, offline caching, hosting, test on a real iPhone.
 
 Testing throughout: automatic tests for scheduling and answer checking, plus a scripted
