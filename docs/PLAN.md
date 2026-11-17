@@ -82,12 +82,12 @@ New cards are added in sheet order (row by row) within the chosen categories.
 ## Build order
 
 1. ~~Crop the 144 card faces and 5 back illustrations from the sheets; round the corners; add image paths to `cards.json`.~~ Done.
-2. Card component and animations, tested at phone size.
-3. Session flow, grade buttons, FSRS scheduling.
-4. Home and category screens; save progress on the device.
-5. Typing mode.
-6. Polish: sounds, French speech (auto-play setting + replay button), interface-language setting, statistics, Export / Import.
-7. iPhone install: icon, manifest, offline caching, hosting, test on a real iPhone.
+2. ~~Card component and animations, tested at phone size.~~ Done.
+3. ~~Session flow, grade buttons, FSRS scheduling.~~ Done.
+4. ~~Home and category screens; save progress on the device.~~ Done.
+5. ~~Typing mode.~~ Done.
+6. ~~Polish: sounds, French speech (auto-play setting + replay button), interface-language setting, statistics, Export / Import.~~ Done.
+7. iPhone install: icon, manifest, offline caching, hosting (done); test on a real iPhone (to do).
 
 Testing throughout: automatic tests for scheduling and answer checking, plus a scripted
 run through a full session at iPhone size with screenshots.

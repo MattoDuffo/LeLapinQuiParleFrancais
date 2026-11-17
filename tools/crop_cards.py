@@ -15,8 +15,8 @@ from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "cards.json"
-OUT_FRONT = ROOT / "assets" / "cards"
-OUT_BACK = ROOT / "assets" / "backs"
+OUT_FRONT = ROOT / "public" / "assets" / "cards"
+OUT_BACK = ROOT / "public" / "assets" / "backs"
 CORNER_RATIO = 0.06  # outer corner radius as a fraction of card width
 BORDER_RATIO = 0.035  # white border width as a fraction of the art width
 INNER_CORNER_RATIO = 0.025  # small rounding on the art inside the border
