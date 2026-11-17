@@ -20,6 +20,22 @@
       "provisionalCategory": "Les accents é / è / ê / ë",
       "front": "source-sheets/batch1-sheetB-front.webp",
       "back": "source-sheets/batch1-sheetB-back.webp"
+    },
+    {
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "provisionalCategory": "Les sons nasaux (un, on, in, an)",
+      "front": "source-sheets/batch2-sheetC-front.webp",
+      "back": "source-sheets/batch2-sheetC-back.webp"
+    },
+    {
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "provisionalCategory": "Conjugaison : Être, Avoir, Manger (présent)",
+      "front": "source-sheets/batch2-sheetD-front.webp",
+      "back": "source-sheets/batch2-sheetD-back.webp"
     }
   ],
   "cards": [
@@ -382,6 +398,366 @@
       "col": 6,
       "french": "Été",
       "english": "Summer"
+    },
+    {
+      "id": "C-r1c1",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 1,
+      "col": 1,
+      "french": "Un (1)",
+      "english": "One, a"
+    },
+    {
+      "id": "C-r1c2",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 1,
+      "col": 2,
+      "french": "Bon (nasal hor)",
+      "english": "Good"
+    },
+    {
+      "id": "C-r1c3",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 1,
+      "col": 3,
+      "french": "Vin (Comme æ mais nasal)",
+      "english": "Wine"
+    },
+    {
+      "id": "C-r1c4",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 1,
+      "col": 4,
+      "french": "Blanc (Comme huh? sans le 1er h)",
+      "english": "White"
+    },
+    {
+      "id": "C-r1c5",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 1,
+      "col": 5,
+      "french": "Mandarin",
+      "english": "Mandarin"
+    },
+    {
+      "id": "C-r1c6",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 1,
+      "col": 6,
+      "french": "Devant",
+      "english": "In front"
+    },
+    {
+      "id": "C-r2c1",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 2,
+      "col": 1,
+      "french": "Ensemble",
+      "english": "Together"
+    },
+    {
+      "id": "C-r2c2",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 2,
+      "col": 2,
+      "french": "La Fin",
+      "english": "The End"
+    },
+    {
+      "id": "C-r2c3",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 2,
+      "col": 3,
+      "french": "J'ai Faim (Comme \"in\")",
+      "english": "I'm hungry"
+    },
+    {
+      "id": "C-r2c4",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 2,
+      "col": 4,
+      "french": "Vingt",
+      "english": "Twenty"
+    },
+    {
+      "id": "C-r2c5",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 2,
+      "col": 5,
+      "french": "Lapin",
+      "english": "Bunny"
+    },
+    {
+      "id": "C-r2c6",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 2,
+      "col": 6,
+      "french": "Un bon vin blanc",
+      "english": "A good white wine"
+    },
+    {
+      "id": "C-r3c1",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 3,
+      "col": 1,
+      "french": "Ton tonton tond ton thon",
+      "english": "Your uncle mows your tuna"
+    },
+    {
+      "id": "C-r3c2",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 3,
+      "col": 2,
+      "french": "Ils/Elles ont",
+      "english": "They have"
+    },
+    {
+      "id": "C-r3c3",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 3,
+      "col": 3,
+      "french": "Maison",
+      "english": "House"
+    },
+    {
+      "id": "C-r3c4",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 3,
+      "col": 4,
+      "french": "Nous allons",
+      "english": "We go"
+    },
+    {
+      "id": "C-r3c5",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 3,
+      "col": 5,
+      "french": "Nous buvons",
+      "english": "We drink"
+    },
+    {
+      "id": "C-r3c6",
+      "sheet": "C",
+      "category": "PENDING_C",
+      "page": null,
+      "row": 3,
+      "col": 6,
+      "french": "Nous mangeons",
+      "english": "We eat"
+    },
+    {
+      "id": "D-r1c1",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 1,
+      "col": 1,
+      "french": "Je suis (Être)",
+      "english": "I am"
+    },
+    {
+      "id": "D-r1c2",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 1,
+      "col": 2,
+      "french": "Tu es (Être)",
+      "english": "You are"
+    },
+    {
+      "id": "D-r1c3",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 1,
+      "col": 3,
+      "french": "Il/Elle est (Être)",
+      "english": "He/She is"
+    },
+    {
+      "id": "D-r1c4",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 1,
+      "col": 4,
+      "french": "Nous sommes (Être)",
+      "english": "We are"
+    },
+    {
+      "id": "D-r1c5",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 1,
+      "col": 5,
+      "french": "Vous êtes (Être)",
+      "english": "You are"
+    },
+    {
+      "id": "D-r1c6",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 1,
+      "col": 6,
+      "french": "Ils/Elles sont (Être)",
+      "english": "They are"
+    },
+    {
+      "id": "D-r2c1",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 2,
+      "col": 1,
+      "french": "J'ai (Avoir)",
+      "english": "I have"
+    },
+    {
+      "id": "D-r2c2",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 2,
+      "col": 2,
+      "french": "Tu as (Avoir)",
+      "english": "You have"
+    },
+    {
+      "id": "D-r2c3",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 2,
+      "col": 3,
+      "french": "Il/Elle a (Avoir)",
+      "english": "He/She has"
+    },
+    {
+      "id": "D-r2c4",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 2,
+      "col": 4,
+      "french": "Nous avons (Avoir)",
+      "english": "We have"
+    },
+    {
+      "id": "D-r2c5",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 2,
+      "col": 5,
+      "french": "Vous avez (Avoir)",
+      "english": "You have"
+    },
+    {
+      "id": "D-r2c6",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 2,
+      "col": 6,
+      "french": "Ils/Elles ont (Avoir)",
+      "english": "They have"
+    },
+    {
+      "id": "D-r3c1",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 3,
+      "col": 1,
+      "french": "Je mange (Manger)",
+      "english": "I eat"
+    },
+    {
+      "id": "D-r3c2",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 3,
+      "col": 2,
+      "french": "Tu manges (Manger)",
+      "english": "You eat"
+    },
+    {
+      "id": "D-r3c3",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 3,
+      "col": 3,
+      "french": "Il/Elle mange (Manger)",
+      "english": "He/She eats"
+    },
+    {
+      "id": "D-r3c4",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 3,
+      "col": 4,
+      "french": "Nous mangeons (Manger)",
+      "english": "We eat"
+    },
+    {
+      "id": "D-r3c5",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 3,
+      "col": 5,
+      "french": "Vous mangez (Manger)",
+      "english": "You eat"
+    },
+    {
+      "id": "D-r3c6",
+      "sheet": "D",
+      "category": "PENDING_D",
+      "page": null,
+      "row": 3,
+      "col": 6,
+      "french": "Ils/Elles mangent (Manger)",
+      "english": "They eat"
     }
   ]
 }
