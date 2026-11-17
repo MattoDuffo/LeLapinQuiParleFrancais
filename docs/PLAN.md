@@ -9,7 +9,7 @@
 | Sessions | Pick one or more categories (or All); review the cards that are due. New cards are only introduced when the user chooses to add them (no automatic daily limit) |
 | Interface language | English by default, switchable to French (prompts, buttons, menus) |
 | Grade buttons | Forgot / Hard / Good / Easy (FR: Oublié / Difficile / Bien / Facile), each showing when the card would come back, e.g. "Good · 3 days" |
-| Directions | French → English and English → French scheduled separately (144 cards × 2 = 288 review items) |
+| Directions | French → English and English → French scheduled separately (134 vocab cards × 2 + 10 pronunciation cards × 1 = 278 review items) |
 | Scheduler | FSRS (four grades: Forgot / Hard / Good / Easy) |
 | Storage | On the device (IndexedDB); sync can come later |
 
