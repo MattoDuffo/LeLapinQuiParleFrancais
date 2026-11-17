@@ -17,7 +17,10 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "cards.json"
 OUT_FRONT = ROOT / "assets" / "cards"
 OUT_BACK = ROOT / "assets" / "backs"
-CORNER_RATIO = 0.06  # corner radius as a fraction of card width
+CORNER_RATIO = 0.06  # outer corner radius as a fraction of card width
+BORDER_RATIO = 0.035  # white border width as a fraction of the art width
+INNER_CORNER_RATIO = 0.025  # small rounding on the art inside the border
+OUTLINE = (215, 215, 215, 255)  # faint edge so the white border shows on light backgrounds
 INSET = 2  # px trimmed from every edge to drop the soft anti-aliased border
 
 
@@ -45,14 +48,28 @@ def card_boxes(back_path):
             for ri, r in enumerate(rows) for ci, c in enumerate(cols)}
 
 
-def rounded(img):
-    img = img.convert("RGBA")
-    w, h = img.size
-    mask = Image.new("L", (w * 4, h * 4), 0)
+def _round_mask(size, radius, scale=4):
+    w, h = size
+    mask = Image.new("L", (w * scale, h * scale), 0)
     ImageDraw.Draw(mask).rounded_rectangle(
-        (0, 0, w * 4 - 1, h * 4 - 1), radius=round(w * 4 * CORNER_RATIO), fill=255)
-    img.putalpha(mask.resize((w, h), Image.LANCZOS))
-    return img
+        (0, 0, w * scale - 1, h * scale - 1), radius=round(radius * scale), fill=255)
+    return mask.resize((w, h), Image.LANCZOS)
+
+
+def rounded(art):
+    """Frame the art in a white border with rounded corners, like a playing card."""
+    art = art.convert("RGBA")
+    aw, ah = art.size
+    b = round(aw * BORDER_RATIO)
+    w, h = aw + 2 * b, ah + 2 * b
+    art.putalpha(_round_mask(art.size, aw * INNER_CORNER_RATIO))
+    outline = Image.new("RGBA", (w, h), OUTLINE)
+    white = Image.new("RGBA", (w - 4, h - 4), (255, 255, 255, 255))
+    radius = w * CORNER_RATIO
+    outline.paste(white, (2, 2), _round_mask(white.size, radius - 2))
+    outline.alpha_composite(art, (b, b))
+    outline.putalpha(_round_mask((w, h), radius))
+    return outline
 
 
 def main():
