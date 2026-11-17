@@ -52,6 +52,22 @@
       "provisionalCategory": "Conjugaison : Boire (présent), Avoir & Être (futur)",
       "front": "source-sheets/batch3-sheetF-front.webp",
       "back": "source-sheets/batch3-sheetF-back.webp"
+    },
+    {
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "provisionalCategory": "Les voyelles (a, e, i, o, u, ou, oi, au, eau)",
+      "front": "source-sheets/batch4-sheetG-front.webp",
+      "back": "source-sheets/batch4-sheetG-back.webp"
+    },
+    {
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "provisionalCategory": "Mots courants, pronoms et passé composé",
+      "front": "source-sheets/batch4-sheetH-front.webp",
+      "back": "source-sheets/batch4-sheetH-back.webp"
     }
   ],
   "cards": [
@@ -1134,6 +1150,372 @@
       "col": 6,
       "french": "Ils/Elles seront (Être)",
       "english": "They will be"
+    },
+    {
+      "id": "G-r1c1",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 1,
+      "col": 1,
+      "french": "Eu (Mathieu)",
+      "english": "Comme \"blur\" sans \"r\"",
+      "note": "Answer side is a pronunciation hint, not an English translation"
+    },
+    {
+      "id": "G-r1c2",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 1,
+      "col": 2,
+      "french": "A",
+      "english": "Ah"
+    },
+    {
+      "id": "G-r1c3",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 1,
+      "col": 3,
+      "french": "E",
+      "english": "饿",
+      "answerLanguage": "zh",
+      "note": "Answer side is labelled 'Chinois': a Chinese character that sounds like the French vowel"
+    },
+    {
+      "id": "G-r1c4",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 1,
+      "col": 4,
+      "french": "I",
+      "english": "Ee"
+    },
+    {
+      "id": "G-r1c5",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 1,
+      "col": 5,
+      "french": "O",
+      "english": "Oh"
+    },
+    {
+      "id": "G-r1c6",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 1,
+      "col": 6,
+      "french": "U",
+      "english": "鱼",
+      "answerLanguage": "zh",
+      "note": "Answer side is labelled 'Chinois': a Chinese character that sounds like the French vowel"
+    },
+    {
+      "id": "G-r2c1",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 2,
+      "col": 1,
+      "french": "Ou",
+      "english": "Oo"
+    },
+    {
+      "id": "G-r2c2",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 2,
+      "col": 2,
+      "french": "Oi",
+      "english": "Wooa",
+      "note": "Upside-down handwriting; read as 'Wooa' (back art says oi → \"wooah!\") - please confirm"
+    },
+    {
+      "id": "G-r2c3",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 2,
+      "col": 3,
+      "french": "Ami",
+      "english": "Friend"
+    },
+    {
+      "id": "G-r2c4",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 2,
+      "col": 4,
+      "french": "Diva",
+      "english": "Diva"
+    },
+    {
+      "id": "G-r2c5",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 2,
+      "col": 5,
+      "french": "Je",
+      "english": "I"
+    },
+    {
+      "id": "G-r2c6",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 2,
+      "col": 6,
+      "french": "Menu",
+      "english": "Menu"
+    },
+    {
+      "id": "G-r3c1",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 3,
+      "col": 1,
+      "french": "Au",
+      "english": "Oh"
+    },
+    {
+      "id": "G-r3c2",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 3,
+      "col": 2,
+      "french": "~eau",
+      "english": "Oh"
+    },
+    {
+      "id": "G-r3c3",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 3,
+      "col": 3,
+      "french": "Eau",
+      "english": "Water"
+    },
+    {
+      "id": "G-r3c4",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 3,
+      "col": 4,
+      "french": "Fini",
+      "english": "Ended, Done"
+    },
+    {
+      "id": "G-r3c5",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 3,
+      "col": 5,
+      "french": "Ici",
+      "english": "Here"
+    },
+    {
+      "id": "G-r3c6",
+      "sheet": "G",
+      "category": "PENDING_G",
+      "page": null,
+      "row": 3,
+      "col": 6,
+      "french": "La, Le",
+      "english": "The"
+    },
+    {
+      "id": "H-r1c1",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 1,
+      "col": 1,
+      "french": "Bateau",
+      "english": "Boat"
+    },
+    {
+      "id": "H-r1c2",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 1,
+      "col": 2,
+      "french": "Auto",
+      "english": "Car"
+    },
+    {
+      "id": "H-r1c3",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 1,
+      "col": 3,
+      "french": "J'ai vu",
+      "english": "I have seen"
+    },
+    {
+      "id": "H-r1c4",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 1,
+      "col": 4,
+      "french": "J'ai eu",
+      "english": "I have had"
+    },
+    {
+      "id": "H-r1c5",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 1,
+      "col": 5,
+      "french": "Oiseau",
+      "english": "Bird"
+    },
+    {
+      "id": "H-r1c6",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 1,
+      "col": 6,
+      "french": "Cheval",
+      "english": "Horse"
+    },
+    {
+      "id": "H-r2c1",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 2,
+      "col": 1,
+      "french": "Au revoir!",
+      "english": "See you!"
+    },
+    {
+      "id": "H-r2c2",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 2,
+      "col": 2,
+      "french": "Nous",
+      "english": "We"
+    },
+    {
+      "id": "H-r2c3",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 2,
+      "col": 3,
+      "french": "Vous",
+      "english": "You (plural)"
+    },
+    {
+      "id": "H-r2c4",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 2,
+      "col": 4,
+      "french": "Tu",
+      "english": "You (Single)"
+    },
+    {
+      "id": "H-r2c5",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 2,
+      "col": 5,
+      "french": "Il, Elle",
+      "english": "He, She"
+    },
+    {
+      "id": "H-r2c6",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 2,
+      "col": 6,
+      "french": "Ils, Elles",
+      "english": "They"
+    },
+    {
+      "id": "H-r3c1",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 3,
+      "col": 1,
+      "french": "J'ai lu",
+      "english": "I have read"
+    },
+    {
+      "id": "H-r3c2",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 3,
+      "col": 2,
+      "french": "Tu peux",
+      "english": "You can"
+    },
+    {
+      "id": "H-r3c3",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 3,
+      "col": 3,
+      "french": "Dodo",
+      "english": "Slumber"
+    },
+    {
+      "id": "H-r3c4",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 3,
+      "col": 4,
+      "french": "Je suis venu",
+      "english": "I came"
+    },
+    {
+      "id": "H-r3c5",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 3,
+      "col": 5,
+      "french": "Je fais",
+      "english": "I make / I do"
+    },
+    {
+      "id": "H-r3c6",
+      "sheet": "H",
+      "category": "PENDING_H",
+      "page": null,
+      "row": 3,
+      "col": 6,
+      "french": "Douche",
+      "english": "Shower"
     }
   ]
 }
