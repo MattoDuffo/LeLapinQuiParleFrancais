@@ -31,7 +31,7 @@ function choice<T extends string>(label: string, options: T[], value: T, text: (
 }
 
 async function exportBackup(): Promise<void> {
-  const name = `le-lapin-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  const name = `les-lapins-backup-${new Date().toISOString().slice(0, 10)}.json`;
   const file = new File([exportData()], name, { type: 'application/json' });
   // On iPhone the share sheet lets the user save to Files, AirDrop, mail, etc.
   if (navigator.canShare?.({ files: [file] })) {

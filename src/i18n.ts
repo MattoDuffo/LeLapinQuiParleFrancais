@@ -1,7 +1,7 @@
 import { state, type Lang } from './store';
 
 const en = {
-  appName: 'Le Lapin',
+  appName: 'Les Lapins',
   categories: 'Categories',
   cat_ErSound: 'The “ay” sound',
   cat_ESound: 'Accents é è ê ë',
@@ -95,7 +95,7 @@ const en = {
 type Key = keyof typeof en;
 
 const fr: Record<Key, string> = {
-  appName: 'Le Lapin',
+  appName: 'Les Lapins',
   categories: 'Catégories',
   cat_ErSound: 'Le son « ay »',
   cat_ESound: 'Les accents é è ê ë',

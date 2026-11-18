@@ -15,7 +15,7 @@
 | Session direction | French → English, English → French, or Mixed (random direction per card) |
 | Tech | Vite + TypeScript, FSRS via the open-source `ts-fsrs` library |
 | Hosting | GitHub Pages; the repo will be made public. A GitHub Action publishes the app whenever `main` changes |
-| App name / icon | "Le Lapin" under the home-screen icon; the icon is the bunny cropped from the card art |
+| App name / icon | "Les Lapins" under the home-screen icon; the icon is the bunny cropped from the card art |
 | Speech | French is read aloud with the iPhone's built-in French voice: on by default when the French side appears, can be turned off in settings; a speaker button replays it |
 | Workflow | All work goes straight to `main`; no pull requests |
 

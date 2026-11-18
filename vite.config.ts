@@ -9,8 +9,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: false,
       manifest: {
-        name: 'Le Lapin qui parle français',
-        short_name: 'Le Lapin',
+        name: 'Les Lapins qui parlent français',
+        short_name: 'Les Lapins',
         description: 'French flashcards',
         lang: 'en',
         start_url: './',

@@ -1,4 +1,4 @@
-# Le Lapin qui parle français
+# Les Lapins qui parlent français
 
 A French flashcard web app for iPhone, built from a set of printed cards.
 Cards rise from the bottom of the screen, flip to show one language, and turn

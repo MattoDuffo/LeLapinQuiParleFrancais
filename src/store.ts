@@ -70,7 +70,7 @@ export function exportData(): string {
 
 export async function importData(text: string): Promise<void> {
   const data = JSON.parse(text);
-  if (data?.app !== 'le-lapin' || typeof data.progress !== 'object') throw new Error('Not a Le Lapin backup');
+  if (data?.app !== 'le-lapin' || typeof data.progress !== 'object') throw new Error('Not a Les Lapins backup');
   state.progress = data.progress;
   state.log = Array.isArray(data.log) ? data.log : [];
   state.settings = { ...defaultSettings(), ...(data.settings ?? {}) };
