@@ -5,9 +5,9 @@ import { addNewCards, dueItems, newCardsAvailable, Session, sheetCounts, shuffle
 const now = new Date('2026-11-17T12:00:00Z');
 
 describe('cards', () => {
-  it('has 212 cards with 414 review directions', () => {
-    expect(cards).toHaveLength(212);
-    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(414);
+  it('has 216 cards with 422 review directions', () => {
+    expect(cards).toHaveLength(216);
+    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(422);
     expect(cards.filter((c) => c.type === 'pronunciation')).toHaveLength(10);
   });
 });
@@ -165,7 +165,7 @@ describe('number cards', () => {
 });
 
 describe('calendar cards', () => {
-  it('has the days, times of day, months and week words on two Calendar sheets', () => {
+  it('has the days, times of day, months, week words and seasons on two Calendar sheets', () => {
     const cal = cards.filter((c) => c.category === 'Calendar');
     expect(cal.map((c) => c.french)).toEqual([
       'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche',
@@ -173,9 +173,10 @@ describe('calendar cards', () => {
       'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août',
       'Septembre', 'Octobre', 'Novembre', 'Décembre',
       'Fin de semaine', 'Semaine', 'Mois',
+      'Été', 'Automne', 'Hiver', 'Printemps',
     ]);
     expect(cal.filter((c) => c.sheet === 'L')).toHaveLength(18);
-    expect(cal.filter((c) => c.sheet === 'M')).toHaveLength(8);
+    expect(cal.filter((c) => c.sheet === 'M')).toHaveLength(12);
     expect(cardById.get('L-r1c1')?.english).toBe('Monday');
     expect(cal.every((c) => c.directions.length === 2)).toBe(true);
     expect(cal.every((c) => c.backImage === 'assets/backs/Calendar.webp')).toBe(true);

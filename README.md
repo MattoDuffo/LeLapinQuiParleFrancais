@@ -51,7 +51,7 @@ See `docs/PLAN-card-stats.md`.
     `priority.ts` the 1-3 star priority of each card
   - `ui/` screens: home, study (card animations), statistics, settings,
     `words.ts` the word list of a category and the page for one card
-- `data/cards.json` — the 212 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
+- `data/cards.json` — the 216 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
   `french`, `english`, `type` (`vocab` / `pronunciation`), `directions`,
   `frontImage`, `backImage`, and sometimes `note` / `answerLanguage`
 - `public/assets/` — card images, `public/icons/` — app icons
@@ -76,4 +76,4 @@ Categories and pages come from the sheet file names (`Front_<Category><page>.png
 | `Verbs` | 3 | Conjugations of être, avoir, manger, faire, boire |
 | `Vowels` | 2 | Vowel sounds and common words |
 | `Numbers` | 3 | Zéro to vingt, the tens, hundreds, and some larger numbers |
-| `Calendar` | 2 | Days of the week, months, times of day, week / weekend / month |
+| `Calendar` | 2 | Days of the week, months, seasons, times of day, week / weekend / month |

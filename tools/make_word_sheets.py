@@ -65,7 +65,8 @@ CALENDAR = [
     ("Mai", "May"), ("Juin", "June"), ("Juillet", "July"), ("Août", "August"),
     ("Septembre", "September"), ("Octobre", "October"), ("Novembre", "November"),
     ("Décembre", "December"), ("Fin de semaine", "Weekend"), ("Semaine", "Week"),
-    ("Mois", "Month"),
+    ("Mois", "Month"), ("Été", "Summer"), ("Automne", "Autumn"), ("Hiver", "Winter"),
+    ("Printemps", "Spring"),
 ]
 # id, first sheet letter (sheets A-H are the original printed sets), words, French title
 CATEGORIES = [

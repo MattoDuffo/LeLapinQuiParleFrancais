@@ -3721,6 +3721,74 @@
       ],
       "frontImage": "assets/cards/M-r2c2.webp",
       "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c3",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 3,
+      "french": "Été",
+      "english": "Summer",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c3.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c4",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 4,
+      "french": "Automne",
+      "english": "Autumn",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c4.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c5",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 5,
+      "french": "Hiver",
+      "english": "Winter",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c5.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c6",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 6,
+      "french": "Printemps",
+      "english": "Spring",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c6.webp",
+      "backImage": "assets/backs/Calendar.webp"
     }
   ],
   "categories": [
