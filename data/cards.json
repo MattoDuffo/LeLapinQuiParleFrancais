@@ -76,6 +76,24 @@
       "back": "source-sheets/Back_VOWELS.png",
       "backImage": "assets/backs/Vowels.webp",
       "description": "Mots courants, pronoms et passé composé"
+    },
+    {
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "front": "source-sheets/Front_Numbers.png",
+      "back": "source-sheets/Back_NUMBERS.png",
+      "backImage": "assets/backs/Numbers.webp",
+      "description": "Les nombres de zéro à dix-sept"
+    },
+    {
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "front": "source-sheets/Front_Numbers2.png",
+      "back": "source-sheets/Back_NUMBERS.png",
+      "backImage": "assets/backs/Numbers.webp",
+      "description": "Les nombres de dix-huit à vingt"
     }
   ],
   "cards": [
@@ -2520,6 +2538,363 @@
       ],
       "frontImage": "assets/cards/H-r3c6.webp",
       "backImage": "assets/backs/Vowels.webp"
+    },
+    {
+      "id": "I-r1c1",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 1,
+      "col": 1,
+      "french": "Zéro",
+      "english": "Zero",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r1c1.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r1c2",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 1,
+      "col": 2,
+      "french": "Un",
+      "english": "One",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r1c2.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r1c3",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 1,
+      "col": 3,
+      "french": "Deux",
+      "english": "Two",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r1c3.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r1c4",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 1,
+      "col": 4,
+      "french": "Trois",
+      "english": "Three",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r1c4.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r1c5",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 1,
+      "col": 5,
+      "french": "Quatre",
+      "english": "Four",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r1c5.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r1c6",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 1,
+      "col": 6,
+      "french": "Cinq",
+      "english": "Five",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r1c6.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r2c1",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 2,
+      "col": 1,
+      "french": "Six",
+      "english": "Six",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r2c1.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r2c2",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 2,
+      "col": 2,
+      "french": "Sept",
+      "english": "Seven",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r2c2.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r2c3",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 2,
+      "col": 3,
+      "french": "Huit",
+      "english": "Eight",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r2c3.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r2c4",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 2,
+      "col": 4,
+      "french": "Neuf",
+      "english": "Nine",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r2c4.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r2c5",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 2,
+      "col": 5,
+      "french": "Dix",
+      "english": "Ten",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r2c5.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r2c6",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 2,
+      "col": 6,
+      "french": "Onze",
+      "english": "Eleven",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r2c6.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r3c1",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 3,
+      "col": 1,
+      "french": "Douze",
+      "english": "Twelve",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r3c1.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r3c2",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 3,
+      "col": 2,
+      "french": "Treize",
+      "english": "Thirteen",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r3c2.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r3c3",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 3,
+      "col": 3,
+      "french": "Quatorze",
+      "english": "Fourteen",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r3c3.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r3c4",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 3,
+      "col": 4,
+      "french": "Quinze",
+      "english": "Fifteen",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r3c4.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r3c5",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 3,
+      "col": 5,
+      "french": "Seize",
+      "english": "Sixteen",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r3c5.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "I-r3c6",
+      "sheet": "I",
+      "category": "Numbers",
+      "page": 1,
+      "row": 3,
+      "col": 6,
+      "french": "Dix-sept",
+      "english": "Seventeen",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/I-r3c6.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r1c1",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 1,
+      "col": 1,
+      "french": "Dix-huit",
+      "english": "Eighteen",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r1c1.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r1c2",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 1,
+      "col": 2,
+      "french": "Dix-neuf",
+      "english": "Nineteen",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r1c2.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r1c3",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 1,
+      "col": 3,
+      "french": "Vingt",
+      "english": "Twenty",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r1c3.webp",
+      "backImage": "assets/backs/Numbers.webp"
     }
   ],
   "categories": [
@@ -2541,6 +2916,10 @@
     },
     {
       "id": "Vowels",
+      "pages": 2
+    },
+    {
+      "id": "Numbers",
       "pages": 2
     }
   ]

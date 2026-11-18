@@ -5,9 +5,9 @@ import { addNewCards, dueItems, newCardsAvailable, Session, sheetCounts, shuffle
 const now = new Date('2026-11-17T12:00:00Z');
 
 describe('cards', () => {
-  it('has 144 cards with 278 review directions', () => {
-    expect(cards).toHaveLength(144);
-    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(278);
+  it('has 165 cards with 320 review directions', () => {
+    expect(cards).toHaveLength(165);
+    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(320);
     expect(cards.filter((c) => c.type === 'pronunciation')).toHaveLength(10);
   });
 });
@@ -29,12 +29,12 @@ describe('adding and reviewing cards', () => {
     const categories = new Set<string>();
     for (let run = 0; run < 200; run++) {
       const p: Progress = {};
-      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], 10, now);
+      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], 10, now);
       firstPicks.add(added[0].id);
       added.forEach((c) => categories.add(c.category));
     }
     expect(firstPicks.size).toBeGreaterThan(50);
-    expect(categories.size).toBe(5);
+    expect(categories.size).toBe(6);
   });
 
   it('pronunciation cards only go French to English', () => {
@@ -96,5 +96,18 @@ describe('shuffleItems', () => {
     const one: Progress = {};
     addNewCards(one, ['A'], 1, now);
     expect(shuffleItems(dueItems(one, ['A'], 'mixed', now))).toHaveLength(2);
+  });
+});
+
+describe('number cards', () => {
+  it('has the numbers zéro to vingt on two Numbers sheets', () => {
+    const numbers = cards.filter((c) => c.category === 'Numbers');
+    expect(numbers.map((c) => c.french)).toEqual([
+      'Zéro', 'Un', 'Deux', 'Trois', 'Quatre', 'Cinq', 'Six', 'Sept', 'Huit', 'Neuf', 'Dix',
+      'Onze', 'Douze', 'Treize', 'Quatorze', 'Quinze', 'Seize', 'Dix-sept', 'Dix-huit', 'Dix-neuf', 'Vingt',
+    ]);
+    expect(numbers.filter((c) => c.sheet === 'I')).toHaveLength(18);
+    expect(numbers.filter((c) => c.sheet === 'J')).toHaveLength(3);
+    expect(numbers.every((c) => c.backImage === 'assets/backs/Numbers.webp')).toBe(true);
   });
 });
