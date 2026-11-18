@@ -11,16 +11,22 @@ import { studyScreen } from './ui/study';
 
 const app = document.getElementById('app')!;
 
-function show(el: HTMLElement): void {
-  document.querySelector('.toast')?.remove();
+let currentScreen = '';
+
+/** Swap screens. Redrawing the screen already shown (e.g. after a tap) keeps the scroll position. */
+function show(name: string, el: HTMLElement): void {
+  const same = name === currentScreen;
+  const y = same ? window.scrollY : 0;
+  currentScreen = name;
+  if (!same) document.querySelector('.toast')?.remove();
   app.replaceChildren(el);
-  window.scrollTo(0, 0);
+  window.scrollTo(0, y);
 }
 
-nav.home = () => show(homeScreen());
-nav.study = (items) => show(studyScreen(items));
-nav.stats = () => show(statsScreen());
-nav.settings = () => show(settingsScreen());
+nav.home = () => show('home', homeScreen());
+nav.study = (items) => show('study', studyScreen(items));
+nav.stats = () => show('stats', statsScreen());
+nav.settings = () => show('settings', settingsScreen());
 
 async function init(): Promise<void> {
   await loadState();
