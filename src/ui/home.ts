@@ -1,6 +1,6 @@
 import { backImageFor, CATEGORY_ORDER, sheets, type DirChoice } from '../data';
 import { t, tAny } from '../i18n';
-import { addNewCards, dueItems, newCardsAvailable, sheetCounts } from '../session';
+import { addNewCards, dueItems, newCardsAvailable, sheetCounts, shuffleItems } from '../session';
 import { sounds } from '../sound';
 import { unlockSpeech } from '../speech';
 import { saveProgress, saveSettings, state } from '../store';
@@ -182,7 +182,7 @@ export function homeScreen(): HTMLElement {
       onclick: () => {
         unlockSpeech(); // iOS needs a tap before speech/audio can play
         if (s.sounds) sounds.unlock();
-        nav.study(items);
+        nav.study(shuffleItems(items));
       },
     },
     s.selectedSheets.length === 0

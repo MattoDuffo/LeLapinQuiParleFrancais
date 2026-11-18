@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { cards, itemKey } from './data';
-import { addNewCards, dueItems, newCardsAvailable, Session, sheetCounts, type Progress } from './session';
+import { addNewCards, dueItems, newCardsAvailable, Session, sheetCounts, shuffleItems, type Progress } from './session';
 
 const now = new Date('2026-11-17T12:00:00Z');
 
@@ -53,5 +53,25 @@ describe('adding and reviewing cards', () => {
     expect(s.queue).toHaveLength(0);
     expect(dueItems(p, ['B'], 'fr-en', now)).toHaveLength(0);
     expect(sheetCounts(p, 'B', 'fr-en', now)).toMatchObject({ due: 0, fresh: 17, total: 36 });
+  });
+});
+
+describe('shuffleItems', () => {
+  it('changes the printed order but keeps every item', () => {
+    const p: Progress = {};
+    addNewCards(p, ['A', 'B'], 36, now);
+    const items = dueItems(p, ['A', 'B'], 'fr-en', now);
+    const shuffled = shuffleItems(items);
+    expect(shuffled.map((i) => i.key).sort()).toEqual(items.map((i) => i.key).sort());
+    expect(shuffled.map((i) => i.key)).not.toEqual(items.map((i) => i.key));
+  });
+
+  it('keeps both directions of a card apart in Mixed mode', () => {
+    const p: Progress = {};
+    addNewCards(p, ['A'], 18, now);
+    for (let run = 0; run < 50; run++) {
+      const s = shuffleItems(dueItems(p, ['A'], 'mixed', now));
+      for (let i = 1; i < s.length; i++) expect(s[i].card.id).not.toBe(s[i - 1].card.id);
+    }
   });
 });

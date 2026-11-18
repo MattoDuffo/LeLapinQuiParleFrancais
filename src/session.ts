@@ -32,6 +32,27 @@ export function dueItems(progress: Progress, sheetIds: string[], choice: DirChoi
   );
 }
 
+/**
+ * Shuffle a session so cards don't come in printed order, and keep the two
+ * directions of the same card apart (Mixed mode) where possible.
+ */
+export function shuffleItems(items: SessionItem[], random: () => number = Math.random): SessionItem[] {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  for (let i = 1; i < out.length; i++) {
+    if (out[i].card.id !== out[i - 1].card.id) continue;
+    const k = out.findIndex(
+      (x, idx) =>
+        idx > i && x.card.id !== out[i - 1].card.id && (idx + 1 >= out.length || out[idx + 1].card.id !== out[i].card.id),
+    );
+    if (k !== -1) [out[i], out[k]] = [out[k], out[i]];
+  }
+  return out;
+}
+
 export function newCardsAvailable(progress: Progress, sheetIds: string[]): CardData[] {
   return cardsInSheets(sheetIds).filter((c) => !isAdded(progress, c));
 }
