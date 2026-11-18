@@ -9,9 +9,6 @@ export interface SessionItem {
   dir: Dir;
 }
 
-/** Cards graded again within this window come back later in the same session. */
-export const REQUEUE_WINDOW_MS = 20 * 60 * 1000;
-
 const directionsFor = (card: CardData, choice: DirChoice): Dir[] =>
   card.directions.filter((d) => choice === 'mixed' || d === choice);
 
@@ -143,7 +140,8 @@ export class Session {
     this.gradeCounts[grade]++;
     this.progress[item.key] = after;
     this.queue.shift();
-    if (new Date(after.due).getTime() - now.getTime() < REQUEUE_WINDOW_MS) {
+    // Only a forgotten (red) card comes back this session; other grades just set its next due date.
+    if (grade === 1) {
       const gap = 3 + Math.floor(this.random() * 3); // after 3-5 other cards
       this.queue.splice(Math.min(gap, this.queue.length), 0, item);
     }

@@ -61,6 +61,31 @@ describe('adding and reviewing cards', () => {
     expect(s.reviewed).toBe(0);
   });
 
+  it('only forgotten cards come back in the same session', () => {
+    for (const g of [2, 3, 4] as const) {
+      const p: Progress = {};
+      addNewCards(p, ['B'], 10, now);
+      const s = new Session(dueItems(p, ['B'], 'fr-en', now), p);
+      const seen = new Map<string, number>();
+      while (s.current) {
+        const key = s.current.key;
+        seen.set(key, (seen.get(key) ?? 0) + 1);
+        s.answer(g, now);
+      }
+      expect(s.reviewed).toBe(10);
+      expect([...seen.values()].every((n) => n === 1)).toBe(true);
+    }
+    // A red card comes back once, then leaves when it is remembered.
+    const p: Progress = {};
+    addNewCards(p, ['B'], 10, now);
+    const s = new Session(dueItems(p, ['B'], 'fr-en', now), p);
+    const first = s.current!.key;
+    s.answer(1, now);
+    expect(s.queue.filter((i) => i.key === first)).toHaveLength(1);
+    while (s.current) s.answer(3, now);
+    expect(s.reviewed).toBe(11);
+  });
+
   it('easy cards leave the session and are no longer due', () => {
     const p: Progress = {};
     addNewCards(p, ['B'], 1, now);
@@ -80,6 +105,27 @@ describe('shuffleItems', () => {
     const shuffled = shuffleItems(items);
     expect(shuffled.map((i) => i.key).sort()).toEqual(items.map((i) => i.key).sort());
     expect(shuffled.map((i) => i.key)).not.toEqual(items.map((i) => i.key));
+  });
+
+  it('mixes cards within and across categories', () => {
+    const p: Progress = {};
+    const all = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
+    addNewCards(p, all, 1000, now);
+    const items = dueItems(p, all, 'fr-en', now);
+    const firstCategories = new Set<string>();
+    const firstCards = new Set<string>();
+    let switches = 0;
+    const runs = 200;
+    for (let run = 0; run < runs; run++) {
+      const s = shuffleItems(items);
+      firstCategories.add(s[0].card.category);
+      firstCards.add(s[0].key);
+      for (let i = 1; i < s.length; i++) if (s[i].card.category !== s[i - 1].card.category) switches++;
+    }
+    expect(firstCategories.size).toBe(6); // any category can come first
+    expect(firstCards.size).toBeGreaterThan(100); // and any card within it
+    // Categories are interleaved, not grouped: most neighbours differ.
+    expect(switches / (runs * (items.length - 1))).toBeGreaterThan(0.6);
   });
 
   it('keeps both directions of a card apart in Mixed mode', () => {
