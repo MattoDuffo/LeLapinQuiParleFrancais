@@ -390,6 +390,23 @@ p { margin: 0; }
   animation: hint-bob 1.6s ease-in-out infinite;
 }
 .hint:empty { display: none; }
+.cat-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0 16px;
+  text-align: center;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 650;
+  line-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+.cat-label:empty { display: none; }
 @keyframes hint-bob { 50% { translate: 0 -4px; } }
 
 .grades {
