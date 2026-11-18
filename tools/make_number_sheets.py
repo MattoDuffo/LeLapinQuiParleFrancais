@@ -1,9 +1,12 @@
-"""Build the printable sheets for the Numbers category (0 to 20).
+"""Build the printable sheets and card data for the Numbers category.
 
-Writes three sheets on the same 3 x 6 grid as the other printed sheets:
-  source-sheets/Front_Numbers.png   cards 0-17
-  source-sheets/Front_Numbers2.png  cards 18-20 (the other cells are left blank)
+Writes sheets on the same 3 x 6 grid as the other printed sheets:
+  source-sheets/Front_Numbers.png, Front_Numbers2.png, ...  18 cards per sheet,
+      in the order of NUMBERS (cells after the last card are left blank)
   source-sheets/Back_NUMBERS.png    the illustration from Art_Numbers.png in every cell
+and replaces the Numbers sheets and cards in data/cards.json (sheets I, J, K...).
+Card ids follow the sheet position, so keep adding new numbers at the end of
+NUMBERS: reordering would move saved progress onto different numbers.
 
 The fronts are drawn on Front_TEMPLATE.png: French in the top half, English
 upside down in the bottom half. The template's placeholder "Lorem" is removed
@@ -15,6 +18,8 @@ Run tools/crop_cards.py afterwards to cut the card images.
 
 Usage: python3 tools/make_number_sheets.py
 """
+import json
+from itertools import combinations
 from pathlib import Path
 
 import numpy as np
@@ -24,6 +29,8 @@ from crop_cards import card_boxes
 
 ROOT = Path(__file__).resolve().parent.parent
 SHEETS = ROOT / "source-sheets"
+DATA = ROOT / "data" / "cards.json"
+FIRST_SHEET = "I"  # sheets A-H are the original printed sets
 FONT = Path(__file__).resolve().parent / "fonts" / "ComicNeue-Regular.woff"
 GRID = SHEETS / "Back_ERSOUNDS.png"  # the template is printed on this grid
 CLEAN_FROM = ["Front_ErSound.png", "Front_Vowels.png"]
@@ -36,9 +43,22 @@ NUMBERS = [
     ("Douze", "Twelve"), ("Treize", "Thirteen"), ("Quatorze", "Fourteen"),
     ("Quinze", "Fifteen"), ("Seize", "Sixteen"), ("Dix-sept", "Seventeen"),
     ("Dix-huit", "Eighteen"), ("Dix-neuf", "Nineteen"), ("Vingt", "Twenty"),
+    ("Trente", "Thirty"), ("Quarante", "Forty"), ("Cinquante", "Fifty"),
+    ("Soixante", "Sixty"), ("Soixante-dix", "Seventy"), ("Quatre-vingts", "Eighty"),
+    ("Quatre-vingt-dix", "Ninety"), ("Cent", "One hundred"), ("Trois cents", "Three hundred"),
+    ("Sept cents", "Seven hundred"), ("Mille", "One thousand"),
+    ("Mille cinq cents", "Fifteen hundred"), ("Vingt-trois", "Twenty-three"),
+    ("Trente-neuf", "Thirty-nine"), ("Quarante-huit", "Forty-eight"),
+    ("Cinquante et un", "Fifty-one"), ("Soixante-quatre", "Sixty-four"),
+    ("Soixante-treize", "Seventy-three"), ("Quatre-vingt-deux", "Eighty-two"),
+    ("Quatre-vingt-quinze", "Ninety-five"),
+    ("Mille neuf cent quatre-vingt-cinq", "Nineteen eighty-five"),
 ]
 FRENCH_Y, ENGLISH_Y = 0.335, 0.745  # text centres as a fraction of card height
-FONT_SIZE, MAX_WIDTH = 92, 0.78
+FONT_SIZE, MAX_WIDTH = 92, 0.86
+MIN_SIZE = 80  # use more lines (up to MAX_LINES) rather than a font smaller than this
+MAX_LINES = 3
+LINE_GAP = 1.1  # line height as a multiple of the font size
 ART_CORNER = 0.03  # corner radius of the art on the back sheet, fraction of width
 
 
@@ -50,15 +70,37 @@ def blank_card(box):
     return card
 
 
-def fitted_font(text, width):
-    size = FONT_SIZE
-    while size > 20:
+def _fit(lines, width):
+    """Largest font (in steps of 2) at which every line fits the card."""
+    for size in range(FONT_SIZE, 20, -2):
         font = ImageFont.truetype(str(FONT), size)
-        left, _, right, _ = font.getbbox(text)
-        if right - left <= width * MAX_WIDTH:
+        if all(font.getlength(line) <= width * MAX_WIDTH for line in lines):
             return font
-        size -= 4
     return font
+
+
+def _splits(text, count):
+    """Every way to break the words into `count` lines, after a space or hyphen."""
+    breaks = [i + 1 for i, ch in enumerate(text) if ch in " -"]
+    for cut in combinations(breaks, count - 1):
+        edges = (0, *cut, len(text))
+        yield [text[a:b].strip() for a, b in zip(edges, edges[1:])]
+
+
+def layout(text, width):
+    """Font and lines for the words: as few lines as keep the font at least
+    MIN_SIZE, preferring breaks at spaces over breaks inside hyphenated words."""
+    best = None
+    for count in range(1, MAX_LINES + 1):
+        for lines in _splits(text, count):
+            # A line ending in a hyphen counts as slightly smaller, so spaces win ties.
+            font = _fit(lines, width)
+            score = font.size - 4 * sum(line.endswith("-") for line in lines)
+            if best is None or score > best[0]:
+                best = (score, font, lines)
+        if best[1].size >= MIN_SIZE:
+            break
+    return best[1], best[2]
 
 
 def write_words(card, french, english):
@@ -66,8 +108,12 @@ def write_words(card, french, english):
     for text, cy, flip in ((french, FRENCH_Y, False), (english, ENGLISH_Y, True)):
         layer = Image.new("RGBA", (w, h), (0, 0, 0, 0))
         y = h * (1 - cy) if flip else h * cy  # rotating 180° mirrors the position
-        ImageDraw.Draw(layer).text((w / 2, y), text, font=fitted_font(text, w),
-                                   fill=(0, 0, 0, 255), anchor="mm")
+        font, lines = layout(text, w)
+        step = font.size * LINE_GAP
+        draw = ImageDraw.Draw(layer)
+        for n, line in enumerate(lines):
+            draw.text((w / 2, y + (n - (len(lines) - 1) / 2) * step), line, font=font,
+                      fill=(0, 0, 0, 255), anchor="mm")
         if flip:
             layer = layer.rotate(180)
         card.paste(layer, (0, 0), layer)
@@ -122,13 +168,44 @@ def back_sheet(boxes):
     return sheet
 
 
+def front_name(page):
+    return "Front_Numbers.png" if page == 1 else f"Front_Numbers{page}.png"
+
+
+def update_data(boxes, pages):
+    data = json.loads(DATA.read_text())
+    data["sheets"] = [s for s in data["sheets"] if s["category"] != "Numbers"]
+    data["cards"] = [c for c in data["cards"] if c["category"] != "Numbers"]
+    data["categories"] = [c for c in data["categories"] if c["id"] != "Numbers"]
+    cells = sorted(boxes)
+    back = "assets/backs/Numbers.webp"
+    for page in range(1, pages + 1):
+        letter = chr(ord(FIRST_SHEET) + page - 1)
+        data["sheets"].append({
+            "sheet": letter, "category": "Numbers", "page": page,
+            "front": f"source-sheets/{front_name(page)}", "back": "source-sheets/Back_NUMBERS.png",
+            "backImage": back, "description": f"Les nombres, page {page}"})
+    for i, (french, english) in enumerate(NUMBERS):
+        page, (row, col) = i // len(cells) + 1, cells[i % len(cells)]
+        letter = chr(ord(FIRST_SHEET) + page - 1)
+        card_id = f"{letter}-r{row}c{col}"
+        data["cards"].append({
+            "id": card_id, "sheet": letter, "category": "Numbers", "page": page,
+            "row": row, "col": col, "french": french, "english": english, "type": "vocab",
+            "directions": ["fr-en", "en-fr"], "frontImage": f"assets/cards/{card_id}.webp",
+            "backImage": back})
+    data["categories"].append({"id": "Numbers", "pages": pages})
+    DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+
+
 def main():
     boxes = card_boxes(GRID)
-    for i, page in enumerate(front_sheets(boxes)):
-        name = "Front_Numbers.png" if i == 0 else f"Front_Numbers{i + 1}.png"
-        page.save(SHEETS / name, optimize=True)
+    pages = front_sheets(boxes)
+    for page, sheet in enumerate(pages, 1):
+        sheet.save(SHEETS / front_name(page), optimize=True)
     back_sheet(boxes).save(SHEETS / "Back_NUMBERS.png", optimize=True)
-    print(f"{len(NUMBERS)} number cards on {i + 1} front sheets, 1 back sheet")
+    update_data(boxes, len(pages))
+    print(f"{len(NUMBERS)} number cards on {len(pages)} front sheets, 1 back sheet")
 
 
 if __name__ == "__main__":

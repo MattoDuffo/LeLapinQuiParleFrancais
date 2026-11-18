@@ -35,13 +35,14 @@ Every push to `main` is tested, built and published to GitHub Pages by
     `answer.ts` typed-answer checking, `store.ts` on-device storage and backups,
     `i18n.ts` English/French interface, `speech.ts` French read-aloud
   - `ui/` screens: home, study (card animations), statistics, settings
-- `data/cards.json` — the 165 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
+- `data/cards.json` — the 186 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
   `french`, `english`, `type` (`vocab` / `pronunciation`), `directions`,
   `frontImage`, `backImage`, and sometimes `note` / `answerLanguage`
 - `public/assets/` — card images, `public/icons/` — app icons
 - `source-sheets/` — the high-res print sheets the images are cut from
 - `tools/make_number_sheets.py` — draws the Numbers sheets from `Front_TEMPLATE.png`
-  and `Art_Numbers.png` (run it before `crop_cards.py`)
+  and `Art_Numbers.png` and writes their cards into `cards.json` (run it before
+  `crop_cards.py`); add new numbers at the end of its `NUMBERS` list
 - `tools/crop_cards.py` — re-cuts the card images; `tools/make_icons.py` — app icons
 - `docs/PLAN.md` — the design plan
 
@@ -56,4 +57,4 @@ Categories and pages come from the sheet file names (`Front_<Category><page>.png
 | `OnSound` | 1 | Nasal sounds (un, on, in, an) |
 | `Verbs` | 3 | Conjugations of être, avoir, manger, faire, boire |
 | `Vowels` | 2 | Vowel sounds and common words |
-| `Numbers` | 2 | Numbers from zéro to vingt |
+| `Numbers` | 3 | Zéro to vingt, the tens, hundreds, and some larger numbers |

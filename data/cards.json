@@ -84,7 +84,7 @@
       "front": "source-sheets/Front_Numbers.png",
       "back": "source-sheets/Back_NUMBERS.png",
       "backImage": "assets/backs/Numbers.webp",
-      "description": "Les nombres de zéro à dix-sept"
+      "description": "Les nombres, page 1"
     },
     {
       "sheet": "J",
@@ -93,7 +93,16 @@
       "front": "source-sheets/Front_Numbers2.png",
       "back": "source-sheets/Back_NUMBERS.png",
       "backImage": "assets/backs/Numbers.webp",
-      "description": "Les nombres de dix-huit à vingt"
+      "description": "Les nombres, page 2"
+    },
+    {
+      "sheet": "K",
+      "category": "Numbers",
+      "page": 3,
+      "front": "source-sheets/Front_Numbers3.png",
+      "back": "source-sheets/Back_NUMBERS.png",
+      "backImage": "assets/backs/Numbers.webp",
+      "description": "Les nombres, page 3"
     }
   ],
   "cards": [
@@ -2895,6 +2904,363 @@
       ],
       "frontImage": "assets/cards/J-r1c3.webp",
       "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r1c4",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 1,
+      "col": 4,
+      "french": "Trente",
+      "english": "Thirty",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r1c4.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r1c5",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 1,
+      "col": 5,
+      "french": "Quarante",
+      "english": "Forty",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r1c5.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r1c6",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 1,
+      "col": 6,
+      "french": "Cinquante",
+      "english": "Fifty",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r1c6.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r2c1",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 2,
+      "col": 1,
+      "french": "Soixante",
+      "english": "Sixty",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r2c1.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r2c2",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 2,
+      "col": 2,
+      "french": "Soixante-dix",
+      "english": "Seventy",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r2c2.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r2c3",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 2,
+      "col": 3,
+      "french": "Quatre-vingts",
+      "english": "Eighty",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r2c3.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r2c4",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 2,
+      "col": 4,
+      "french": "Quatre-vingt-dix",
+      "english": "Ninety",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r2c4.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r2c5",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 2,
+      "col": 5,
+      "french": "Cent",
+      "english": "One hundred",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r2c5.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r2c6",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 2,
+      "col": 6,
+      "french": "Trois cents",
+      "english": "Three hundred",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r2c6.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r3c1",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 3,
+      "col": 1,
+      "french": "Sept cents",
+      "english": "Seven hundred",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r3c1.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r3c2",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 3,
+      "col": 2,
+      "french": "Mille",
+      "english": "One thousand",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r3c2.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r3c3",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 3,
+      "col": 3,
+      "french": "Mille cinq cents",
+      "english": "Fifteen hundred",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r3c3.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r3c4",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 3,
+      "col": 4,
+      "french": "Vingt-trois",
+      "english": "Twenty-three",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r3c4.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r3c5",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 3,
+      "col": 5,
+      "french": "Trente-neuf",
+      "english": "Thirty-nine",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r3c5.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "J-r3c6",
+      "sheet": "J",
+      "category": "Numbers",
+      "page": 2,
+      "row": 3,
+      "col": 6,
+      "french": "Quarante-huit",
+      "english": "Forty-eight",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/J-r3c6.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "K-r1c1",
+      "sheet": "K",
+      "category": "Numbers",
+      "page": 3,
+      "row": 1,
+      "col": 1,
+      "french": "Cinquante et un",
+      "english": "Fifty-one",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/K-r1c1.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "K-r1c2",
+      "sheet": "K",
+      "category": "Numbers",
+      "page": 3,
+      "row": 1,
+      "col": 2,
+      "french": "Soixante-quatre",
+      "english": "Sixty-four",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/K-r1c2.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "K-r1c3",
+      "sheet": "K",
+      "category": "Numbers",
+      "page": 3,
+      "row": 1,
+      "col": 3,
+      "french": "Soixante-treize",
+      "english": "Seventy-three",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/K-r1c3.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "K-r1c4",
+      "sheet": "K",
+      "category": "Numbers",
+      "page": 3,
+      "row": 1,
+      "col": 4,
+      "french": "Quatre-vingt-deux",
+      "english": "Eighty-two",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/K-r1c4.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "K-r1c5",
+      "sheet": "K",
+      "category": "Numbers",
+      "page": 3,
+      "row": 1,
+      "col": 5,
+      "french": "Quatre-vingt-quinze",
+      "english": "Ninety-five",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/K-r1c5.webp",
+      "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "K-r1c6",
+      "sheet": "K",
+      "category": "Numbers",
+      "page": 3,
+      "row": 1,
+      "col": 6,
+      "french": "Mille neuf cent quatre-vingt-cinq",
+      "english": "Nineteen eighty-five",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/K-r1c6.webp",
+      "backImage": "assets/backs/Numbers.webp"
     }
   ],
   "categories": [
@@ -2920,7 +3286,7 @@
     },
     {
       "id": "Numbers",
-      "pages": 2
+      "pages": 3
     }
   ]
 }
