@@ -42,7 +42,7 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
   const undoBtn = h('button', { class: 'icon-btn', 'aria-label': t('undo'), onclick: () => undo() }, icon(ICONS.undo));
   const speakBtn = h(
     'button',
-    { class: 'icon-btn', 'aria-label': t('readAloud'), onclick: () => speak(true) },
+    { class: 'icon-btn', 'aria-label': t('readAloud'), onclick: () => speak(true, phaseValue === 'answer') },
     icon(ICONS.speaker),
   );
   const closeBtn = h('button', { class: 'icon-btn', 'aria-label': t('close'), onclick: () => exit() }, icon(ICONS.close));
@@ -162,10 +162,13 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
   const frenchVisible = () =>
     (phaseValue === 'prompt' && current().dir === 'fr-en') || phaseValue === 'answer' || phaseValue === 'revealing';
 
-  function speak(force = false): void {
+  /** Read the French; when checking a card (answer shown), follow with the English. */
+  function speak(force = false, withEnglish = false): void {
     if (!session.current) return;
     if (!force && !settings.autoSpeak) return;
-    speakFrench(current().card.french, settings.voice);
+    const { card } = current();
+    const english = withEnglish && card.type !== 'pronunciation' ? card.english : undefined;
+    speakFrench(card.french, settings.voice, english);
   }
 
   function updateBar(): void {
@@ -304,7 +307,7 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
       promptText.textContent = t('howWell');
     }
     updateBar();
-    if (item.dir === 'en-fr') speak();
+    speak(false, true);
   }
 
   function submitTyped(): void {
