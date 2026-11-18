@@ -28,7 +28,7 @@ export interface Sheet {
 
 export const cards: CardData[] = raw.cards as CardData[];
 export const cardById = new Map(cards.map((c) => [c.id, c]));
-export const CATEGORY_ORDER = ['ErSound', 'ESound', 'OnSound', 'Verbs', 'Vowels'];
+export const CATEGORY_ORDER = ['ErSound', 'ESound', 'OnSound', 'Verbs', 'Vowels', 'Numbers'];
 
 export const sheets: Sheet[] = raw.sheets
   .map((s) => ({ sheet: s.sheet, category: s.category, page: s.page }))

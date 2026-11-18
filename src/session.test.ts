@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { cards, itemKey } from './data';
+import { cardById, cards, itemKey } from './data';
 import { addNewCards, dueItems, newCardsAvailable, Session, sheetCounts, shuffleItems, type Progress } from './session';
 
 const now = new Date('2026-11-17T12:00:00Z');
 
 describe('cards', () => {
-  it('has 144 cards with 278 review directions', () => {
-    expect(cards).toHaveLength(144);
-    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(278);
+  it('has 186 cards with 362 review directions', () => {
+    expect(cards).toHaveLength(186);
+    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(362);
     expect(cards.filter((c) => c.type === 'pronunciation')).toHaveLength(10);
   });
 });
@@ -29,12 +29,12 @@ describe('adding and reviewing cards', () => {
     const categories = new Set<string>();
     for (let run = 0; run < 200; run++) {
       const p: Progress = {};
-      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], 10, now);
+      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'], 10, now);
       firstPicks.add(added[0].id);
       added.forEach((c) => categories.add(c.category));
     }
     expect(firstPicks.size).toBeGreaterThan(50);
-    expect(categories.size).toBe(5);
+    expect(categories.size).toBe(6);
   });
 
   it('pronunciation cards only go French to English', () => {
@@ -96,5 +96,24 @@ describe('shuffleItems', () => {
     const one: Progress = {};
     addNewCards(one, ['A'], 1, now);
     expect(shuffleItems(dueItems(one, ['A'], 'mixed', now))).toHaveLength(2);
+  });
+});
+
+describe('number cards', () => {
+  it('has zéro to vingt, then the larger numbers, on three Numbers sheets', () => {
+    const numbers = cards.filter((c) => c.category === 'Numbers');
+    expect(numbers.map((c) => c.french)).toEqual([
+      'Zéro', 'Un', 'Deux', 'Trois', 'Quatre', 'Cinq', 'Six', 'Sept', 'Huit', 'Neuf', 'Dix',
+      'Onze', 'Douze', 'Treize', 'Quatorze', 'Quinze', 'Seize', 'Dix-sept', 'Dix-huit', 'Dix-neuf', 'Vingt',
+      'Trente', 'Quarante', 'Cinquante', 'Soixante', 'Soixante-dix', 'Quatre-vingts', 'Quatre-vingt-dix',
+      'Cent', 'Trois cents', 'Sept cents', 'Mille', 'Mille cinq cents', 'Vingt-trois', 'Trente-neuf',
+      'Quarante-huit', 'Cinquante et un', 'Soixante-quatre', 'Soixante-treize', 'Quatre-vingt-deux',
+      'Quatre-vingt-quinze', 'Mille neuf cent quatre-vingt-cinq',
+    ]);
+    expect(numbers.filter((c) => c.sheet === 'I')).toHaveLength(18);
+    expect(numbers.filter((c) => c.sheet === 'J')).toHaveLength(18);
+    expect(numbers.filter((c) => c.sheet === 'K')).toHaveLength(6);
+    expect(cardById.get('J-r1c3')?.french).toBe('Vingt'); // saved progress keeps its card
+    expect(numbers.every((c) => c.backImage === 'assets/backs/Numbers.webp')).toBe(true);
   });
 });
