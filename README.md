@@ -28,13 +28,25 @@ node e2e/run.mjs http://localhost:4173/ e2e/screens
 Every push to `main` is tested, built and published to GitHub Pages by
 `.github/workflows/deploy.yml`.
 
+## Card priority
+
+Each card has 1, 2 (default) or 3 stars, set on its page (Statistics → a
+category → a word). Stars nudge, not override, the schedule: a 3-star card
+comes up a random 0-35% of its interval early, a 1-star card 0-25% late,
+drawn again after each review. Cards still in learning steps (under a day)
+aren't nudged. When adding new cards, 3-star cards are picked about twice as
+often and 1-star cards half as often. Stars are saved with progress and
+included in backups; resetting progress keeps them.
+
 ## Layout
 
 - `src/` — the app (TypeScript, no framework)
   - `data.ts` card data, `srs.ts` FSRS scheduling, `session.ts` study queue,
     `answer.ts` typed-answer checking, `store.ts` on-device storage and backups,
-    `i18n.ts` English/French interface, `speech.ts` French read-aloud
-  - `ui/` screens: home, study (card animations), statistics, settings
+    `i18n.ts` English/French interface, `speech.ts` French read-aloud,
+    `priority.ts` the 1-3 star priority of each card
+  - `ui/` screens: home, study (card animations), statistics, settings,
+    `words.ts` the word list of a category and the page for one card
 - `data/cards.json` — the 186 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
   `french`, `english`, `type` (`vocab` / `pronunciation`), `directions`,
   `frontImage`, `backImage`, and sometimes `note` / `answerLanguage`

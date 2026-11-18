@@ -2,6 +2,7 @@ import { get, set, del } from 'idb-keyval';
 import type { DirChoice } from './data';
 import { sheets } from './data';
 import type { Progress } from './session';
+import type { Stars } from './priority';
 import type { GradeValue } from './srs';
 
 export type Lang = 'en' | 'fr';
@@ -39,12 +40,20 @@ export const state = {
   progress: {} as Progress,
   log: [] as LogEntry[],
   settings: defaultSettings(),
+  /** Card id -> stars, only for cards not at the default 2 stars. */
+  priority: {} as Record<string, Stars>,
 };
 
 export async function loadState(): Promise<void> {
   try {
-    const [progress, log, settings] = await Promise.all([get('progress'), get('log'), get('settings')]);
+    const [progress, log, settings, priority] = await Promise.all([
+      get('progress'),
+      get('log'),
+      get('settings'),
+      get('priority'),
+    ]);
     state.progress = progress ?? {};
+    state.priority = priority ?? {};
     state.log = log ?? [];
     state.settings = { ...defaultSettings(), ...(settings ?? {}) };
   } catch (e) {
@@ -59,6 +68,7 @@ const safeSet = (key: string, value: unknown) =>
 
 export const saveProgress = () => Promise.all([safeSet('progress', state.progress), safeSet('log', state.log)]);
 export const saveSettings = () => safeSet('settings', state.settings);
+export const savePriority = () => safeSet('priority', state.priority);
 
 export function exportData(): string {
   return JSON.stringify(
@@ -74,7 +84,8 @@ export async function importData(text: string): Promise<void> {
   state.progress = data.progress;
   state.log = Array.isArray(data.log) ? data.log : [];
   state.settings = { ...defaultSettings(), ...(data.settings ?? {}) };
-  await Promise.all([saveProgress(), saveSettings()]);
+  state.priority = data.priority && typeof data.priority === 'object' ? data.priority : {};
+  await Promise.all([saveProgress(), saveSettings(), savePriority()]);
 }
 
 export async function resetProgress(): Promise<void> {
