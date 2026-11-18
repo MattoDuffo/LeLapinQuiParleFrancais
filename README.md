@@ -51,14 +51,16 @@ See `docs/PLAN-card-stats.md`.
     `priority.ts` the 1-3 star priority of each card
   - `ui/` screens: home, study (card animations), statistics, settings,
     `words.ts` the word list of a category and the page for one card
-- `data/cards.json` — the 186 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
+- `data/cards.json` — the 216 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
   `french`, `english`, `type` (`vocab` / `pronunciation`), `directions`,
   `frontImage`, `backImage`, and sometimes `note` / `answerLanguage`
 - `public/assets/` — card images, `public/icons/` — app icons
 - `source-sheets/` — the high-res print sheets the images are cut from
-- `tools/make_number_sheets.py` — draws the Numbers sheets from `Front_TEMPLATE.png`
-  and `Art_Numbers.png` and writes their cards into `cards.json` (run it before
-  `crop_cards.py`); add new numbers at the end of its `NUMBERS` list
+- `tools/make_word_sheets.py` — draws the sheets of the categories with no printed
+  sheets (Numbers, Calendar) from `Front_TEMPLATE.png` and `Art_<Category>.png`, and
+  writes their cards into `cards.json` (run it before `crop_cards.py`); add new words
+  at the end of a category's list. Without an `Art_<Category>.png` it draws a
+  placeholder back.
 - `tools/crop_cards.py` — re-cuts the card images; `tools/make_icons.py` — app icons
 - `docs/PLAN.md` — the design plan
 
@@ -74,3 +76,4 @@ Categories and pages come from the sheet file names (`Front_<Category><page>.png
 | `Verbs` | 3 | Conjugations of être, avoir, manger, faire, boire |
 | `Vowels` | 2 | Vowel sounds and common words |
 | `Numbers` | 3 | Zéro to vingt, the tens, hundreds, and some larger numbers |
+| `Calendar` | 2 | Days of the week, months, seasons, times of day, week / weekend / month |

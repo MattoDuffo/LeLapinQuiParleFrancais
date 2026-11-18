@@ -103,6 +103,24 @@
       "back": "source-sheets/Back_NUMBERS.png",
       "backImage": "assets/backs/Numbers.webp",
       "description": "Les nombres, page 3"
+    },
+    {
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "front": "source-sheets/Front_Calendar.png",
+      "back": "source-sheets/Back_CALENDAR.png",
+      "backImage": "assets/backs/Calendar.webp",
+      "description": "Le calendrier, page 1"
+    },
+    {
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "front": "source-sheets/Front_Calendar2.png",
+      "back": "source-sheets/Back_CALENDAR.png",
+      "backImage": "assets/backs/Calendar.webp",
+      "description": "Le calendrier, page 2"
     }
   ],
   "cards": [
@@ -3261,6 +3279,516 @@
       ],
       "frontImage": "assets/cards/K-r1c6.webp",
       "backImage": "assets/backs/Numbers.webp"
+    },
+    {
+      "id": "L-r1c1",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 1,
+      "col": 1,
+      "french": "Lundi",
+      "english": "Monday",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r1c1.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r1c2",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 1,
+      "col": 2,
+      "french": "Mardi",
+      "english": "Tuesday",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r1c2.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r1c3",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 1,
+      "col": 3,
+      "french": "Mercredi",
+      "english": "Wednesday",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r1c3.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r1c4",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 1,
+      "col": 4,
+      "french": "Jeudi",
+      "english": "Thursday",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r1c4.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r1c5",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 1,
+      "col": 5,
+      "french": "Vendredi",
+      "english": "Friday",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r1c5.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r1c6",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 1,
+      "col": 6,
+      "french": "Samedi",
+      "english": "Saturday",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r1c6.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r2c1",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 2,
+      "col": 1,
+      "french": "Dimanche",
+      "english": "Sunday",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r2c1.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r2c2",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 2,
+      "col": 2,
+      "french": "Matin",
+      "english": "Morning",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r2c2.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r2c3",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 2,
+      "col": 3,
+      "french": "Soir",
+      "english": "Evening",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r2c3.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r2c4",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 2,
+      "col": 4,
+      "french": "Jour",
+      "english": "Day",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r2c4.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r2c5",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 2,
+      "col": 5,
+      "french": "Nuit",
+      "english": "Night",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r2c5.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r2c6",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 2,
+      "col": 6,
+      "french": "Janvier",
+      "english": "January",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r2c6.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r3c1",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 3,
+      "col": 1,
+      "french": "Février",
+      "english": "February",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r3c1.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r3c2",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 3,
+      "col": 2,
+      "french": "Mars",
+      "english": "March",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r3c2.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r3c3",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 3,
+      "col": 3,
+      "french": "Avril",
+      "english": "April",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r3c3.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r3c4",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 3,
+      "col": 4,
+      "french": "Mai",
+      "english": "May",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r3c4.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r3c5",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 3,
+      "col": 5,
+      "french": "Juin",
+      "english": "June",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r3c5.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "L-r3c6",
+      "sheet": "L",
+      "category": "Calendar",
+      "page": 1,
+      "row": 3,
+      "col": 6,
+      "french": "Juillet",
+      "english": "July",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/L-r3c6.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r1c1",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 1,
+      "col": 1,
+      "french": "Août",
+      "english": "August",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r1c1.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r1c2",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 1,
+      "col": 2,
+      "french": "Septembre",
+      "english": "September",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r1c2.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r1c3",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 1,
+      "col": 3,
+      "french": "Octobre",
+      "english": "October",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r1c3.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r1c4",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 1,
+      "col": 4,
+      "french": "Novembre",
+      "english": "November",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r1c4.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r1c5",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 1,
+      "col": 5,
+      "french": "Décembre",
+      "english": "December",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r1c5.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r1c6",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 1,
+      "col": 6,
+      "french": "Fin de semaine",
+      "english": "Weekend",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r1c6.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c1",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 1,
+      "french": "Semaine",
+      "english": "Week",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c1.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c2",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 2,
+      "french": "Mois",
+      "english": "Month",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c2.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c3",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 3,
+      "french": "Été",
+      "english": "Summer",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c3.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c4",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 4,
+      "french": "Automne",
+      "english": "Autumn",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c4.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c5",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 5,
+      "french": "Hiver",
+      "english": "Winter",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c5.webp",
+      "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "M-r2c6",
+      "sheet": "M",
+      "category": "Calendar",
+      "page": 2,
+      "row": 2,
+      "col": 6,
+      "french": "Printemps",
+      "english": "Spring",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/M-r2c6.webp",
+      "backImage": "assets/backs/Calendar.webp"
     }
   ],
   "categories": [
@@ -3287,6 +3815,10 @@
     {
       "id": "Numbers",
       "pages": 3
+    },
+    {
+      "id": "Calendar",
+      "pages": 2
     }
   ]
 }
