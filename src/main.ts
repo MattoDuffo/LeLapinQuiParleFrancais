@@ -1,4 +1,6 @@
 import { registerSW } from 'virtual:pwa-register';
+import '@fontsource-variable/fredoka';
+import '@fontsource-variable/nunito';
 import './styles.css';
 import { loadState, state } from './store';
 import { homeScreen } from './ui/home';

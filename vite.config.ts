@@ -17,8 +17,8 @@ export default defineConfig({
         scope: './',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#fdf8ec',
-        theme_color: '#fdf8ec',
+        background_color: '#fcf3df',
+        theme_color: '#fcf3df',
         icons: [
           { src: 'icons/bunny-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/bunny-512.png', sizes: '512x512', type: 'image/png' },
@@ -27,7 +27,7 @@ export default defineConfig({
       },
       workbox: {
         // Cache the whole app, including all 149 card images, for offline use.
-        globPatterns: ['**/*.{js,css,html,png,webp,json}'],
+        globPatterns: ['**/*.{js,css,html,png,webp,json,woff2}'],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
       },
     }),
