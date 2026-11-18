@@ -88,6 +88,11 @@ export async function importData(text: string): Promise<void> {
   await Promise.all([saveProgress(), saveSettings(), savePriority()]);
 }
 
+export async function resetPriority(): Promise<void> {
+  state.priority = {};
+  await del('priority');
+}
+
 export async function resetProgress(): Promise<void> {
   state.progress = {};
   state.log = [];

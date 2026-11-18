@@ -245,6 +245,30 @@ p { margin: 0; }
   z-index: 50;
   animation: toast-in 0.2s ease-out;
 }
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgb(44 40 56 / 0.45);
+  animation: fade-in 0.15s ease-out;
+}
+.dialog {
+  width: 100%;
+  max-width: 360px;
+  background: var(--panel);
+  border: 2.5px solid var(--outline);
+  border-radius: var(--radius);
+  box-shadow: var(--pop);
+  padding: 20px 16px 16px;
+}
+.dialog-msg { margin: 0 0 16px; font-size: 18px; font-weight: 700; text-align: center; }
+.dialog-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.dialog-buttons button { padding: 0 10px; }
+@keyframes fade-in { from { opacity: 0; } }
 @keyframes toast-in { from { opacity: 0; transform: translate(-50%, 8px); } }
 
 /* ---------- study ---------- */
@@ -554,7 +578,10 @@ button.cat-progress:active { background: var(--bg-2); }
 /* ---------- settings ---------- */
 .setting { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 2px dashed var(--line); font-weight: 600; }
 .panel .setting:first-child { border-top: 0; padding-top: 0; }
-.setting .segmented { flex: none; }
+/* On narrow screens a choice drops below its label, and its labels may wrap, rather than overflow. */
+.setting.choice { flex-wrap: wrap; }
+.setting .segmented { flex: none; margin-left: auto; max-width: 100%; }
+.setting.choice .segmented button { flex: 1 1 auto; white-space: normal; line-height: 1.15; padding: 4px 10px; }
 .toggle { cursor: pointer; position: relative; }
 .toggle input { position: absolute; opacity: 0; pointer-events: none; }
 .switch { width: 54px; height: 32px; border-radius: 16px; background: #e6d8bd; border: 2.5px solid var(--outline); position: relative; flex: none; transition: background 0.2s; }

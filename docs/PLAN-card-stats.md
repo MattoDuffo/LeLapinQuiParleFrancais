@@ -36,7 +36,8 @@ Status: **agreed.** Built on the branch; open questions answered below.
 | Adding new cards | Picks weighted by stars: 3 stars ≈ twice as likely, 1 star ≈ half as likely |
 | Order within a session | Unchanged: shuffled; stars only decide *when* a card is due |
 | Counts and charts | Home counts, "Due today" and the 7-day forecast use the nudged dates |
-| Storage | On the device with progress; included in Export / Import; "Reset all progress" keeps stars |
+| Storage | On the device with progress; included in Export / Import; "Reset all progress" keeps stars; a separate "Reset all stars" button in Settings sets every card back to 2 |
+| Confirmation | Both reset buttons ask first, in an in-app popup (Cancel is the default) |
 
 ## Answered questions
 
