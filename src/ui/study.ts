@@ -111,6 +111,8 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
 
   const yHidden = () => stageH + 24;
   const yPrompt = () => stageH - H / 2;
+  /** Face down: the whole card in view, leaving room for the "Tap to flip" note under it. */
+  const yFull = () => Math.max(4, (stageH - H - 36) / 2);
   const yReveal = () => {
     const gradesH = grades.offsetHeight || 96;
     return Math.max(4, (stage.getBoundingClientRect().height - gradesH - H) / 2);
@@ -118,7 +120,8 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
   const posAt = (y: number) => `translate(${left0}px, ${y}px)`;
   // Keep the hint just above the card while it waits at the bottom.
   const placeHint = () => {
-    hint.style.top = `${Math.max(8, yPrompt() - 40)}px`;
+    hint.style.top =
+      phaseValue === 'faceDown' ? `${yFull() + H + 8}px` : `${Math.max(8, yPrompt() - 40)}px`;
   };
 
   function animate(el: HTMLElement, to: string, ms: number): Promise<void> {
@@ -146,7 +149,8 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
 
   const onResize = () => {
     layout();
-    if (phaseValue === 'faceDown' || phaseValue === 'prompt') pos.style.transform = posAt(yPrompt());
+    if (phaseValue === 'faceDown') pos.style.transform = posAt(yFull());
+    if (phaseValue === 'prompt') pos.style.transform = posAt(yPrompt());
     placeHint();
     if (phaseValue === 'answer') pos.style.transform = posAt(yReveal());
   };
@@ -183,8 +187,7 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
     typed = undefined;
     grades.classList.remove('show');
     gradeButtons.forEach((b) => b.classList.remove('suggested'));
-    // Show the answer box before measuring, so the card's position accounts for it.
-    form.hidden = !isTypable(item);
+    form.hidden = true; // the answer box appears once the card is flipped
     hint.textContent = '';
     input.value = '';
     badge.hidden = item.card.type !== 'pronunciation';
@@ -207,13 +210,13 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
 
     if (reduceMotion) {
       await fade(0, 0);
-      pos.style.transform = posAt(yPrompt());
+      pos.style.transform = posAt(yFull());
       await fade(1, 200);
     } else {
-      await animate(pos, posAt(yPrompt()), 550);
+      await animate(pos, posAt(yFull()), 600);
     }
 
-    // Rest face down until the player taps, so they can see the card's back.
+    // Rest face down, fully in view, until the player taps.
     setPhase('faceDown');
     placeHint();
     input.disabled = true;
@@ -228,18 +231,27 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
     setPhase('flipping');
     hint.textContent = '';
     if (settings.sounds) sounds.flip();
+    // Show the answer box first so the half-card position accounts for it.
+    if (isTypable(item)) form.hidden = false;
+    layout();
+    if (item.dir === 'en-fr') rotZ = 180;
     if (reduceMotion) {
       await fade(0, 100);
       flip.style.transform = 'rotateY(180deg)';
-      if (item.dir === 'en-fr') rot.style.transform = `rotate(${(rotZ = 180)}deg)`;
+      rot.style.transform = `rotate(${rotZ}deg)`;
+      pos.style.transform = posAt(yPrompt());
       await fade(1, 150);
     } else {
-      const turns: Promise<void>[] = [animate(flip, 'rotateY(180deg)', 480)];
-      if (item.dir === 'en-fr') turns.push(animate(rot, `rotate(${(rotZ = 180)}deg)`, 480));
-      await Promise.all(turns);
+      // Flip over while sliding down so only the prompt half stays on screen.
+      await Promise.all([
+        animate(flip, 'rotateY(180deg)', 600),
+        animate(rot, `rotate(${rotZ}deg)`, 600),
+        animate(pos, posAt(yPrompt()), 600),
+      ]);
     }
 
     setPhase('prompt');
+    placeHint();
     updateBar();
     if (item.dir === 'fr-en') speak();
     if (isTypable(item)) {

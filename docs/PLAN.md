@@ -24,13 +24,13 @@
 The printed card has French on the top half and English upside down on the bottom half,
 so rotating 180° is the same as turning the physical card around.
 
-1. Card rises from the bottom showing the illustrated back. For English → French the card is pre-rotated 180°.
-2. It stops when the card's middle is at the bottom edge of the screen and rests face down,
-   with a "Tap to flip" note above it. Tapping flips it to the text face.
-   Only the prompt half is on-screen; the answer half is off-screen, not just covered.
-3. Prompt: "What does this mean in English?" / "How do you say this in French?"
-4. Tap: the card rotates 180° and rises until fully visible (answer upright on top, prompt upside down below).
-5. Four self-grade buttons appear. "Forgot" brings the card back after about 3-5 other cards in the same session.
+1. Card rises from the bottom showing the illustrated back. For English → French it also turns 180° as it flips.
+2. It rises until the whole card is in view and rests face down, with a "Tap to flip" note under it.
+3. Tapping flips it to the text face while it slides down until only the prompt half is on screen
+   (the card's middle at the bottom edge); the answer half is off-screen, not just covered.
+4. Prompt: "What does this mean in English?" / "How do you say this in French?"
+5. Tap: the card rotates 180° and rises until fully visible (answer upright on top, prompt upside down below).
+6. Four self-grade buttons appear. "Forgot" brings the card back after about 3-5 other cards in the same session.
 
 - Taps are ignored while an animation is running.
 - An Undo button takes back the last grade.
