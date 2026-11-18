@@ -51,7 +51,8 @@ so rotating 180° is the same as turning the physical card around.
 
 The home and category screens show how many cards haven't been studied yet, with an
 "Add new cards" control where the user picks how many to introduce. Only added cards are scheduled.
-New cards are added in sheet order (row by row) within the chosen categories.
+New cards are picked at random from the chosen categories (whole categories; there is no page picker).
+Each session is shuffled, keeping the two directions of a card apart.
 
 ## Progress
 

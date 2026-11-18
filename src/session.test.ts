@@ -13,12 +13,28 @@ describe('cards', () => {
 });
 
 describe('adding and reviewing cards', () => {
-  it('adds new cards in printed order, in every direction', () => {
+  it('adds new cards in every direction, without repeats', () => {
     const p: Progress = {};
     const added = addNewCards(p, ['A'], 3, now);
-    expect(added.map((c) => c.id)).toEqual(['A-r1c1', 'A-r1c2', 'A-r1c3']);
+    expect(new Set(added.map((c) => c.id)).size).toBe(3);
+    expect(added.every((c) => c.sheet === 'A')).toBe(true);
     expect(Object.keys(p)).toHaveLength(6);
     expect(newCardsAvailable(p, ['A'])).toHaveLength(15);
+    expect(addNewCards(p, ['A'], 100, now)).toHaveLength(15);
+    expect(newCardsAvailable(p, ['A'])).toHaveLength(0);
+  });
+
+  it('picks new cards at random across the chosen categories', () => {
+    const firstPicks = new Set<string>();
+    const categories = new Set<string>();
+    for (let run = 0; run < 200; run++) {
+      const p: Progress = {};
+      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], 10, now);
+      firstPicks.add(added[0].id);
+      added.forEach((c) => categories.add(c.category));
+    }
+    expect(firstPicks.size).toBeGreaterThan(50);
+    expect(categories.size).toBe(5);
   });
 
   it('pronunciation cards only go French to English', () => {

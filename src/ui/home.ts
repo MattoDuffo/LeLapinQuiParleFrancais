@@ -85,56 +85,38 @@ export function homeScreen(): HTMLElement {
       : null;
 
   // ----- categories -----
+  // Categories are chosen as a whole (all their pages). Older saved selections
+  // may hold only some pages of a category; treat those as the whole category.
+  const chosenCategories = new Set(sheets.filter((x) => selected.has(x.sheet)).map((x) => x.category));
+  const normalized = sheets.filter((x) => chosenCategories.has(x.category)).map((x) => x.sheet);
+  if (normalized.join() !== s.selectedSheets.join()) {
+    s.selectedSheets = normalized;
+    void saveSettings();
+  }
+
   const rows = CATEGORY_ORDER.map((category) => {
-    const catSheets = sheets.filter((x) => x.category === category);
-    const ids = catSheets.map((x) => x.sheet);
-    const chosen = ids.filter((id) => selected.has(id));
-    const counted = chosen.length ? chosen : ids;
+    const ids = sheets.filter((x) => x.category === category).map((x) => x.sheet);
+    const on = chosenCategories.has(category);
     let due = 0;
     let fresh = 0;
-    for (const id of counted) {
+    for (const id of ids) {
       const c = sheetCounts(state.progress, id, s.direction, now);
       due += c.due;
       fresh += c.fresh;
     }
-    const toggleAll = () => {
-      const others = [...selected].filter((id) => !ids.includes(id));
-      setSelected(chosen.length === ids.length ? others : [...others, ...ids]);
+    const toggle = () => {
+      const others = s.selectedSheets.filter((id) => !ids.includes(id));
+      setSelected(on ? others : [...others, ...ids]);
     };
-    const pages =
-      catSheets.length > 1
-        ? h(
-            'div',
-            { class: 'pages' },
-            ...catSheets.map((x) =>
-              h(
-                'button',
-                {
-                  class: `page-chip ${selected.has(x.sheet) ? 'on' : ''}`,
-                  'aria-pressed': String(selected.has(x.sheet)),
-                  onclick: (e: Event) => {
-                    e.stopPropagation();
-                    const next = new Set(selected);
-                    if (next.has(x.sheet)) next.delete(x.sheet);
-                    else next.add(x.sheet);
-                    setSelected([...next]);
-                  },
-                },
-                t('page', { n: x.page }),
-              ),
-            ),
-          )
-        : null;
-    const state_ = chosen.length === 0 ? 'off' : chosen.length === ids.length ? 'on' : 'some';
     return h(
       'div',
       {
-        class: `cat-row ${state_}`,
+        class: `cat-row ${on ? 'on' : 'off'}`,
         role: 'checkbox',
-        'aria-checked': state_ === 'on' ? 'true' : state_ === 'some' ? 'mixed' : 'false',
+        'aria-checked': String(on),
         tabindex: '0',
-        onclick: toggleAll,
-        onkeydown: (e: KeyboardEvent) => (e.key === ' ' || e.key === 'Enter') && (e.preventDefault(), toggleAll()),
+        onclick: toggle,
+        onkeydown: (e: KeyboardEvent) => (e.key === ' ' || e.key === 'Enter') && (e.preventDefault(), toggle()),
       },
       h('img', { class: 'cat-thumb', src: backImageFor(category), alt: '' }),
       h(
@@ -142,7 +124,6 @@ export function homeScreen(): HTMLElement {
         { class: 'cat-text' },
         h('div', { class: 'cat-name' }, tAny(`cat_${category}`)),
         h('div', { class: 'cat-counts' }, t('counts', { due, fresh })),
-        pages,
       ),
       h('span', { class: 'check', 'aria-hidden': 'true' }),
     );

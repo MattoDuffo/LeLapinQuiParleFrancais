@@ -133,19 +133,8 @@ p { margin: 0; }
   display: grid;
   place-items: center;
 }
-.cat-row.on .check, .cat-row.some .check { background: var(--blue); border-color: var(--blue); }
+.cat-row.on .check { background: var(--blue); border-color: var(--blue); }
 .cat-row.on .check::after { content: ''; width: 7px; height: 12px; border: solid #fff; border-width: 0 3px 3px 0; transform: translateY(-1px) rotate(45deg); }
-.cat-row.some .check::after { content: ''; width: 12px; height: 3px; background: #fff; border-radius: 2px; }
-.pages { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
-.page-chip {
-  font-size: 13px;
-  padding: 4px 10px;
-  min-height: 30px;
-  border-radius: 15px;
-  background: #f1ece0;
-  color: var(--muted);
-}
-.page-chip.on { background: var(--blue-soft); color: var(--blue); font-weight: 600; }
 
 .options { display: flex; flex-direction: column; gap: 14px; }
 .field-label { font-size: 14px; color: var(--muted); margin-bottom: 6px; }

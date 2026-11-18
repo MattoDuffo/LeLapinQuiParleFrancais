@@ -63,9 +63,21 @@ export function newCardsAvailable(progress: Progress, sheetIds: string[]): CardD
   return cardsInSheets(sheetIds).filter((c) => !isAdded(progress, c));
 }
 
-/** Introduce the next `count` unstudied cards (in printed order), in every direction they support. */
-export function addNewCards(progress: Progress, sheetIds: string[], count: number, now: Date): CardData[] {
-  const added = newCardsAvailable(progress, sheetIds).slice(0, count);
+/** Introduce `count` unstudied cards chosen at random, in every direction they support. */
+export function addNewCards(
+  progress: Progress,
+  sheetIds: string[],
+  count: number,
+  now: Date,
+  random: () => number = Math.random,
+): CardData[] {
+  // Pick at random from everything not yet studied in the chosen categories.
+  const pool = newCardsAvailable(progress, sheetIds);
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  const added = pool.slice(0, count);
   for (const card of added) for (const dir of card.directions) progress[itemKey(card.id, dir)] = newCard(now);
   return added;
 }
