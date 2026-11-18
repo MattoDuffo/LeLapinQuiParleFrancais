@@ -68,10 +68,17 @@ describe('shuffleItems', () => {
 
   it('keeps both directions of a card apart in Mixed mode', () => {
     const p: Progress = {};
-    addNewCards(p, ['A'], 18, now);
-    for (let run = 0; run < 50; run++) {
-      const s = shuffleItems(dueItems(p, ['A'], 'mixed', now));
-      for (let i = 1; i < s.length; i++) expect(s[i].card.id).not.toBe(s[i - 1].card.id);
-    }
+    addNewCards(p, ['A', 'G'], 36, now);
+    for (const sheets of [['A'], ['G'], ['A', 'G']])
+      for (let run = 0; run < 2000; run++) {
+        const items = dueItems(p, sheets, 'mixed', now);
+        const s = shuffleItems(items);
+        expect(s).toHaveLength(items.length);
+        for (let i = 1; i < s.length; i++) expect(s[i].card.id).not.toBe(s[i - 1].card.id);
+      }
+    // Two directions of a single card can't be separated; they still both appear.
+    const one: Progress = {};
+    addNewCards(one, ['A'], 1, now);
+    expect(shuffleItems(dueItems(one, ['A'], 'mixed', now))).toHaveLength(2);
   });
 });

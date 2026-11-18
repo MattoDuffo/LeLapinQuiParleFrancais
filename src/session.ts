@@ -37,18 +37,24 @@ export function dueItems(progress: Progress, sheetIds: string[], choice: DirChoi
  * directions of the same card apart (Mixed mode) where possible.
  */
 export function shuffleItems(items: SessionItem[], random: () => number = Math.random): SessionItem[] {
-  const out = [...items];
-  for (let i = out.length - 1; i > 0; i--) {
+  const pool = [...items];
+  for (let i = pool.length - 1; i > 0; i--) {
     const j = Math.floor(random() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
+    [pool[i], pool[j]] = [pool[j], pool[i]];
   }
-  for (let i = 1; i < out.length; i++) {
-    if (out[i].card.id !== out[i - 1].card.id) continue;
-    const k = out.findIndex(
-      (x, idx) =>
-        idx > i && x.card.id !== out[i - 1].card.id && (idx + 1 >= out.length || out[idx + 1].card.id !== out[i].card.id),
-    );
-    if (k !== -1) [out[i], out[k]] = [out[k], out[i]];
+  // Rebuild the order, never placing a card right after its other direction.
+  const out: SessionItem[] = [];
+  const sameCard = (a: SessionItem | undefined, b: SessionItem) => a?.card.id === b.card.id;
+  while (pool.length) {
+    const idx = pool.findIndex((x) => !sameCard(out[out.length - 1], x));
+    if (idx !== -1) {
+      out.push(pool.splice(idx, 1)[0]);
+      continue;
+    }
+    // Only the twin of the last card is left: slot it in earlier between two other cards.
+    const item = pool.shift()!;
+    const spot = out.findIndex((x, k) => !sameCard(x, item) && (k === 0 || !sameCard(out[k - 1], item)));
+    out.splice(spot === -1 ? out.length : spot, 0, item);
   }
   return out;
 }
