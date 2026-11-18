@@ -12,7 +12,13 @@ const errors = [];
 page.on('pageerror', (e) => errors.push(String(e)));
 page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
 const shot = (name) => page.screenshot({ path: `${out}/${name}.png` });
-const waitPrompt = () => page.waitForSelector('.study[data-phase="prompt"]');
+const waitFaceDown = () => page.waitForSelector('.study[data-phase="faceDown"]');
+// Wait for the card to land face down, tap to flip it, then wait for the prompt.
+const waitPrompt = async () => {
+  await waitFaceDown();
+  await page.click('.stage');
+  await page.waitForSelector('.study[data-phase="prompt"]');
+};
 const waitAnswer = () => page.waitForSelector('.study[data-phase="answer"]');
 
 await page.goto(base);
@@ -26,6 +32,8 @@ await shot('02-home-with-cards');
 await page.click('.start');
 await page.waitForTimeout(300);
 await shot('03-card-rising');
+await waitFaceDown();
+await shot('03b-face-down');
 await waitPrompt();
 await shot('04-prompt-fr-en');
 await page.click('.stage');
@@ -68,7 +76,7 @@ await shot('10-typed-result');
 for (let i = 0; i < 600 && !(await page.$('.summary')); i++) {
   if (await page.$('.study[data-phase="answer"]')) await page.click('.grade.g4');
   else if (await page.$('.study[data-phase="prompt"] .type-form:not([hidden])')) await page.click('.check-btn');
-  else if (await page.$('.study[data-phase="prompt"]')) await page.click('.stage');
+  else if (await page.$('.study[data-phase="prompt"], .study[data-phase="faceDown"]')) await page.click('.stage');
   await page.waitForTimeout(150);
 }
 await page.waitForSelector('.summary');

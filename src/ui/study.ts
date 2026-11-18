@@ -14,7 +14,7 @@ const ASPECT = 1019 / 727;
 const ACCENTS = ['é', 'è', 'ê', 'ë', 'à', 'â', 'ç', 'î', 'ï', 'ô', 'û', 'ù', 'œ'];
 const EASE = 'cubic-bezier(.2,.8,.2,1)';
 
-type Phase = 'entering' | 'prompt' | 'revealing' | 'answer' | 'leaving' | 'done';
+type Phase = 'entering' | 'faceDown' | 'flipping' | 'prompt' | 'revealing' | 'answer' | 'leaving' | 'done';
 
 export function studyScreen(items: SessionItem[]): HTMLElement {
   const session = new Session(items, state.progress);
@@ -34,7 +34,7 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
   const frontImg = h('img', { class: 'face front', alt: '', draggable: 'false' });
   const flip = h('div', { class: 'card-flip' }, backImg, frontImg);
   const rot = h('div', { class: 'card-rot' }, flip);
-  const pos = h('div', { class: 'card-pos', role: 'button', 'aria-label': t('tapToReveal') }, rot);
+  const pos = h('div', { class: 'card-pos', role: 'button', 'aria-label': t('tapToFlip') }, rot);
   const hint = h('div', { class: 'hint' });
   const stage = h('div', { class: 'stage', onclick: () => onCardTap() }, pos, hint);
 
@@ -116,6 +116,10 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
     return Math.max(4, (stage.getBoundingClientRect().height - gradesH - H) / 2);
   };
   const posAt = (y: number) => `translate(${left0}px, ${y}px)`;
+  // Keep the hint just above the card while it waits at the bottom.
+  const placeHint = () => {
+    hint.style.top = `${Math.max(8, yPrompt() - 40)}px`;
+  };
 
   function animate(el: HTMLElement, to: string, ms: number): Promise<void> {
     const from = el.style.transform || 'none';
@@ -142,7 +146,8 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
 
   const onResize = () => {
     layout();
-    if (phaseValue === 'prompt') pos.style.transform = posAt(yPrompt());
+    if (phaseValue === 'faceDown' || phaseValue === 'prompt') pos.style.transform = posAt(yPrompt());
+    placeHint();
     if (phaseValue === 'answer') pos.style.transform = posAt(yReveal());
   };
 
@@ -203,12 +208,32 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
     if (reduceMotion) {
       await fade(0, 0);
       pos.style.transform = posAt(yPrompt());
-      flip.style.transform = 'rotateY(180deg)';
-      if (item.dir === 'en-fr') rot.style.transform = `rotate(${(rotZ = 180)}deg)`;
       await fade(1, 200);
     } else {
       await animate(pos, posAt(yPrompt()), 550);
-      if (settings.sounds) sounds.flip();
+    }
+
+    // Rest face down until the player taps, so they can see the card's back.
+    setPhase('faceDown');
+    placeHint();
+    input.disabled = true;
+    hint.textContent = t('tapToFlip');
+    pos.setAttribute('aria-label', t('tapToFlip'));
+    updateBar();
+  }
+
+  async function flipUp(): Promise<void> {
+    if (phaseValue !== 'faceDown') return;
+    const item = current();
+    setPhase('flipping');
+    hint.textContent = '';
+    if (settings.sounds) sounds.flip();
+    if (reduceMotion) {
+      await fade(0, 100);
+      flip.style.transform = 'rotateY(180deg)';
+      if (item.dir === 'en-fr') rot.style.transform = `rotate(${(rotZ = 180)}deg)`;
+      await fade(1, 150);
+    } else {
       const turns: Promise<void>[] = [animate(flip, 'rotateY(180deg)', 480)];
       if (item.dir === 'en-fr') turns.push(animate(rot, `rotate(${(rotZ = 180)}deg)`, 480));
       await Promise.all(turns);
@@ -218,10 +243,12 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
     updateBar();
     if (item.dir === 'fr-en') speak();
     if (isTypable(item)) {
+      input.disabled = false;
       input.lang = item.dir === 'fr-en' ? 'en' : 'fr';
       input.focus({ preventScroll: true });
     } else {
       hint.textContent = t('tapToReveal');
+      pos.setAttribute('aria-label', t('tapToReveal'));
     }
   }
 
@@ -300,7 +327,7 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
   }
 
   function undo(): void {
-    if (phaseValue === 'entering' || phaseValue === 'revealing' || phaseValue === 'leaving') return;
+    if (['entering', 'flipping', 'revealing', 'leaving'].includes(phaseValue)) return;
     if (!session.undo()) return;
     state.log.pop();
     void saveProgress();
@@ -309,6 +336,7 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
   }
 
   function onCardTap(): void {
+    if (phaseValue === 'faceDown') return void flipUp();
     if (phaseValue !== 'prompt') return;
     if (isTypable(current())) return; // typing mode: use the Check button
     void reveal();
@@ -349,7 +377,10 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
 
   function onKey(e: KeyboardEvent): void {
     if (e.target === input) return;
-    if ((e.key === ' ' || e.key === 'Enter') && phaseValue === 'prompt') {
+    if ((e.key === ' ' || e.key === 'Enter') && phaseValue === 'faceDown') {
+      e.preventDefault();
+      void flipUp();
+    } else if ((e.key === ' ' || e.key === 'Enter') && phaseValue === 'prompt') {
       e.preventDefault();
       if (isTypable(current())) input.focus();
       else void reveal();

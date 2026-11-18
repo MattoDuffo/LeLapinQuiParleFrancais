@@ -25,7 +25,8 @@ The printed card has French on the top half and English upside down on the botto
 so rotating 180° is the same as turning the physical card around.
 
 1. Card rises from the bottom showing the illustrated back. For English → French the card is pre-rotated 180°.
-2. It stops when the card's middle is at the bottom edge of the screen, then flips to the text face.
+2. It stops when the card's middle is at the bottom edge of the screen and rests face down,
+   with a "Tap to flip" note above it. Tapping flips it to the text face.
    Only the prompt half is on-screen; the answer half is off-screen, not just covered.
 3. Prompt: "What does this mean in English?" / "How do you say this in French?"
 4. Tap: the card rotates 180° and rises until fully visible (answer upright on top, prompt upside down below).
