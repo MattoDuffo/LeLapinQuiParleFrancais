@@ -2,7 +2,7 @@ import { CATEGORY_ORDER, cardById, cards, itemKey, type Dir } from './data';
 import type { LogEntry } from './store';
 import type { Progress } from './session';
 import { dueAt } from './priority';
-import { retrievability, STATE_REVIEW, type GradeValue, type StoredCard } from './srs';
+import { STATE_REVIEW, type GradeValue, type StoredCard } from './srs';
 
 const DAY = 24 * 60 * 60 * 1000;
 export const startOfDay = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -75,34 +75,46 @@ export interface DirectionStats {
   lastReviewed?: number;
   /** When it next comes up, priority included (ms). */
   due?: number;
-  /** Chance of remembering it now (0-1), once it has been reviewed. */
-  memory?: number;
+  /** Average grade (0-1), recent reviews counting more; undefined before the first review. */
+  score?: number;
+}
+
+/** Each rating as a share: Forgot 0, Hard 1/3, Good 2/3, Easy 1. */
+const GRADE_SHARE: Record<GradeValue, number> = { 1: 0, 2: 1 / 3, 3: 2 / 3, 4: 1 };
+
+/**
+ * Weighted average of a card's grades, oldest first: the n-th review counts n times,
+ * so the score follows how well it is known now. Forgot, Hard, Good, Good, Easy -> 69%.
+ */
+export function gradeScore(grades: GradeValue[]): number | undefined {
+  if (!grades.length) return undefined;
+  let sum = 0;
+  let weights = 0;
+  grades.forEach((g, i) => {
+    sum += GRADE_SHARE[g] * (i + 1);
+    weights += i + 1;
+  });
+  return sum / weights;
 }
 
 /** Review history and schedule for each direction of a card. */
-export function cardStats(cardId: string, progress: Progress, log: LogEntry[], now: Date): DirectionStats[] {
+export function cardStats(cardId: string, progress: Progress, log: LogEntry[]): DirectionStats[] {
   const card = cardById.get(cardId);
   if (!card) return [];
   return card.directions.map((dir) => {
     const key = itemKey(cardId, dir);
     const stored = progress[key];
     const ratings: Record<GradeValue, number> = { 1: 0, 2: 0, 3: 0, 4: 0 };
-    let views = 0;
-    let lastReviewed: number | undefined;
-    for (const e of log)
-      if (e.k === key) {
-        views++;
-        ratings[e.g]++;
-        lastReviewed = Math.max(lastReviewed ?? 0, e.t);
-      }
+    const reviews = log.filter((e) => e.k === key).sort((a, b) => a.t - b.t);
+    for (const e of reviews) ratings[e.g]++;
     return {
       dir,
       stored,
-      views,
+      views: reviews.length,
       ratings,
-      lastReviewed,
+      lastReviewed: reviews.at(-1)?.t,
       due: stored ? dueAt(key, stored) : undefined,
-      memory: stored && stored.reps > 0 ? retrievability(stored, now) : undefined,
+      score: gradeScore(reviews.map((e) => e.g)),
     };
   });
 }

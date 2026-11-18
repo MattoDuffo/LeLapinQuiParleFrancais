@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { itemKey } from './data';
 import { dueAt, EARLY_SHARE, hashUnit, LATE_SHARE, setStars, starsFor } from './priority';
 import { addNewCards, dueItems, Session, type Progress } from './session';
-import { cardStats } from './stats';
+import { cardStats, gradeScore } from './stats';
 import { gradeCard, newCard, type StoredCard } from './srs';
 import { state } from './store';
 
@@ -116,18 +116,25 @@ describe('cardStats', () => {
       s.answer(g, now);
     }
     const id = log[0].k.split('|')[0];
-    const stats = cardStats(id, p, log, new Date(now.getTime() + DAY));
+    const stats = cardStats(id, p, log);
     expect(stats.map((d) => d.dir)).toEqual(['fr-en', 'en-fr']);
     for (const d of stats) {
       const mine = log.filter((e) => e.k === itemKey(id, d.dir));
       expect(d.views).toBe(mine.length);
       expect(d.ratings[1] + d.ratings[3]).toBe(mine.length);
-      if (mine.length) {
-        expect(d.memory).toBeGreaterThan(0);
-        expect(d.memory).toBeLessThanOrEqual(1);
-      }
+      if (mine.length) expect(d.score).toBe(gradeScore(mine.map((e) => e.g)));
+      else expect(d.score).toBeUndefined();
       expect(d.due).toBeTypeOf('number');
     }
-    expect(cardStats('B-r1c1', {}, [], now)[0]).toMatchObject({ stored: undefined, views: 0 });
+    expect(cardStats('B-r1c1', {}, [])[0]).toMatchObject({ stored: undefined, views: 0 });
+  });
+
+  it('scores the average grade, recent reviews counting more', () => {
+    expect(gradeScore([])).toBeUndefined();
+    expect(gradeScore([4, 4])).toBe(1);
+    expect(gradeScore([1])).toBe(0);
+    expect(Math.round(gradeScore([1, 2, 3, 3, 4])! * 100)).toBe(69);
+    // Improving beats declining with the same grades.
+    expect(gradeScore([1, 4])!).toBeGreaterThan(gradeScore([4, 1])!);
   });
 });

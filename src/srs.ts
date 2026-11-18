@@ -63,6 +63,3 @@ export function previewDue(card: StoredCard, now: Date): Record<GradeValue, Date
 
 export const isDue = (card: StoredCard, now: Date) => new Date(card.due).getTime() <= now.getTime();
 
-/** Chance (0-1) of remembering the card right now, from its memory model. */
-export const retrievability = (card: StoredCard, now: Date): number =>
-  scheduler.get_retrievability(fromStored(card), now, false);

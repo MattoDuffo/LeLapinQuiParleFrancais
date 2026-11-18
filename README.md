@@ -38,6 +38,10 @@ aren't nudged. When adding new cards, 3-star cards are picked about twice as
 often and 1-star cards half as often. Stars are saved with progress and
 included in backups; resetting progress keeps them.
 
+A card's score is its average grade (Forgot 0%, Hard 33%, Good 67%, Easy 100%),
+with the n-th review counting n times so recent reviews weigh more.
+See `docs/PLAN-card-stats.md`.
+
 ## Layout
 
 - `src/` — the app (TypeScript, no framework)

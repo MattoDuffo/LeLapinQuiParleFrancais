@@ -1,7 +1,6 @@
 # Word lists, card statistics and card priority — plan
 
-Status: **draft, for review.** A first version is built on the branch to try out
-(not merged); it follows this plan, and the plan wins where they differ.
+Status: **agreed.** Built on the branch; open questions answered below.
 
 ## Screens
 
@@ -15,7 +14,9 @@ Status: **draft, for review.** A first version is built on the branch to try out
    - Priority: three star buttons (1, 2 or 3 stars)
    - One section per direction (FR → EN, EN → FR), since each direction is scheduled on its own:
      - status: New / Learning / Learned / Relearning / Not added yet
-     - **score**: "Memory": the chance (%) of remembering it right now, from FSRS
+     - **score**: the average grade as a percentage (Forgot 0%, Hard 33%, Good 67%, Easy 100%),
+       with recent reviews counting more: the n-th review counts n times.
+       E.g. Forgot, Hard, Good, Good, Easy (oldest first) → 69%. "—" before the first review.
      - next review (relative + date) and last review
      - times viewed, and the count for each rating (Forgot / Hard / Good / Easy)
 4. Back goes card page → word list → Statistics, returning to the same scroll position.
@@ -37,17 +38,18 @@ Status: **draft, for review.** A first version is built on the branch to try out
 | Counts and charts | Home counts, "Due today" and the 7-day forecast use the nudged dates |
 | Storage | On the device with progress; included in Export / Import; "Reset all progress" keeps stars |
 
-## Open questions
+## Answered questions
 
-1. **Strength of the nudge.** Is 0-35% early / 0-25% late about right, or should it be gentler or stronger?
-2. **New cards.** Should stars change which new cards get added, or only the timing of cards already added?
-3. **Score.** Is "Memory %" the right score to show, or something else (e.g. how many days it's remembered for)?
-4. **Per word or per direction.** One priority for the word, or one each for FR → EN and EN → FR?
-5. **Reset.** Should "Reset all progress" also reset stars to 2?
+1. Strength of the nudge: medium (0-35% early / 0-25% late), as above.
+2. New cards: yes, picked weighted by stars.
+3. Score: average grade, recent reviews counting more (not FSRS memory %).
+4. Priority: once per word.
+5. Reset: keeps stars.
 
 ## Tests
 
 - Priority: default 2 stars; 3 stars never later and 1 star never earlier than the schedule, within the limits;
   the example above happens sometimes but not always; learning steps untouched; weighted new-card picks.
-- Card statistics: views and rating counts per direction match the review log.
+- Card statistics: views and rating counts per direction match the review log; the score example gives 69%,
+  and improving grades score higher than declining ones.
 - Scripted walk-through at iPhone size: Statistics → category → word → set stars → back.

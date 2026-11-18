@@ -40,7 +40,7 @@ const STATE_RANK: Record<number, number> = { 0: 0, 1: 1, 3: 2, 2: 3 };
 
 /** Status of the card as a whole (its least advanced direction) and when it next comes up. */
 function cardStatus(card: CardData): { key: string; due?: number } {
-  const added = cardStats(card.id, state.progress, [], new Date()).filter((s) => s.stored);
+  const added = cardStats(card.id, state.progress, []).filter((s) => s.stored);
   if (!added.length) return { key: 'status_none' };
   const least = added.reduce((a, b) => (STATE_RANK[b.stored!.state] < STATE_RANK[a.stored!.state] ? b : a));
   return { key: `status_${least.stored!.state}`, due: Math.min(...added.map((s) => s.due!)) };
@@ -98,9 +98,9 @@ function directionPanel(s: DirectionStats, now: number): HTMLElement {
           'div',
           { class: 'facts' },
           fact(
-            t('memory'),
-            s.memory === undefined ? '—' : `${Math.round(s.memory * 100)} %`,
-            s.memory === undefined ? undefined : t('memoryHint'),
+            t('score'),
+            s.score === undefined ? '—' : `${Math.round(s.score * 100)} %`,
+            s.score === undefined ? undefined : t('scoreHint'),
           ),
           fact(t('nextReview'), relative(s.due!, now), s.due! > now ? date(s.due!) : undefined),
           fact(t('timesViewed'), String(s.views)),
@@ -152,7 +152,7 @@ export function cardScreen(cardId: string): HTMLElement {
       ),
     ),
   );
-  const stats = cardStats(cardId, state.progress, state.log, new Date());
+  const stats = cardStats(cardId, state.progress, state.log);
   return h(
     'div',
     { class: 'word screen' },
