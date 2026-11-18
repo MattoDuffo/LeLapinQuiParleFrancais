@@ -52,4 +52,38 @@ export function toast(message: string): void {
   toastTimer = window.setTimeout(() => el.remove(), 2200);
 }
 
+/**
+ * In-app confirmation popup (the browser's confirm() looks out of place and is
+ * unreliable in iPhone home-screen apps). Resolves true only if the user confirms.
+ */
+export function confirmDialog(message: string, confirmLabel: string, cancelLabel: string): Promise<boolean> {
+  return new Promise((resolve) => {
+    const previous = document.activeElement as HTMLElement | null;
+    const close = (ok: boolean) => {
+      window.removeEventListener('keydown', onKey, true);
+      backdrop.remove();
+      previous?.focus?.();
+      resolve(ok);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        close(false);
+      }
+    };
+    const cancel = h('button', { class: 'secondary', onclick: () => close(false) }, cancelLabel);
+    const box = h(
+      'div',
+      { class: 'dialog', role: 'alertdialog', 'aria-modal': 'true', 'aria-labelledby': 'dialog-msg' },
+      h('p', { id: 'dialog-msg', class: 'dialog-msg' }, message),
+      h('div', { class: 'dialog-buttons' }, cancel, h('button', { class: 'danger', onclick: () => close(true) }, confirmLabel)),
+    );
+    const backdrop = h('div', { class: 'dialog-backdrop', onclick: (e: Event) => e.target === backdrop && close(false) }, box);
+    document.body.append(backdrop);
+    window.addEventListener('keydown', onKey, true);
+    cancel.focus(); // the safe choice is the default
+  });
+}
+
 export const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -1,7 +1,7 @@
 import { t, tAny } from '../i18n';
 import { speakFrench, speechAvailable } from '../speech';
-import { exportData, importData, resetProgress, saveSettings, state, type Lang, type Settings } from '../store';
-import { h, icon, ICONS, toast } from './dom';
+import { exportData, importData, resetPriority, resetProgress, saveSettings, state, type Lang, type Settings } from '../store';
+import { confirmDialog, h, icon, ICONS, toast } from './dom';
 import { nav } from './nav';
 
 function toggle(label: string, hint: string | null, value: boolean, onChange: (v: boolean) => void) {
@@ -18,7 +18,7 @@ function toggle(label: string, hint: string | null, value: boolean, onChange: (v
 function choice<T extends string>(label: string, options: T[], value: T, text: (v: T) => string, onChange: (v: T) => void) {
   return h(
     'div',
-    { class: 'setting' },
+    { class: 'setting choice' },
     h('div', {}, label),
     h(
       'div',
@@ -115,7 +115,21 @@ export function settingsScreen(): HTMLElement {
           {
             class: 'danger',
             onclick: async () => {
-              if (!confirm(t('resetConfirm'))) return;
+              const n = Object.keys(state.priority).length;
+              const message = n === 0 ? t('resetStarsNone') : t('resetStarsConfirm', { n });
+              if (!(await confirmDialog(message, t('resetStarsYes'), t('cancel')))) return;
+              await resetPriority();
+              toast(t('resetStarsDone'));
+            },
+          },
+          t('resetStars'),
+        ),
+        h(
+          'button',
+          {
+            class: 'danger',
+            onclick: async () => {
+              if (!(await confirmDialog(t('resetConfirm'), t('resetYes'), t('cancel')))) return;
               await resetProgress();
               toast(t('resetDone'));
             },

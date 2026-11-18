@@ -34,8 +34,8 @@ export function statsScreen(): HTMLElement {
 
   const categories = categoryProgress(state.progress).map((c) =>
     h(
-      'div',
-      { class: 'cat-progress' },
+      'button',
+      { class: 'cat-progress', onclick: () => nav.category(c.category) },
       h('img', { class: 'cat-thumb small', src: backImageFor(c.category), alt: '' }),
       h(
         'div',
@@ -49,6 +49,7 @@ export function statsScreen(): HTMLElement {
         ),
         h('div', { class: 'cat-counts' }, t('learnedOf', { a: c.learned, b: c.studying, c: c.total })),
       ),
+      h('span', { class: 'chevron', 'aria-hidden': 'true' }, '›'),
     ),
   );
 

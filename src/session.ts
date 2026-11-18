@@ -1,5 +1,6 @@
 import { cardById, cardsInSheets, itemKey, parseKey, type CardData, type Dir, type DirChoice } from './data';
-import { gradeCard, isDue, newCard, STATE_REVIEW, type GradeValue, type StoredCard } from './srs';
+import { dueAt, isDueNow, pickWeight } from './priority';
+import { gradeCard, newCard, STATE_REVIEW, type GradeValue, type StoredCard } from './srs';
 
 export type Progress = Record<string, StoredCard>;
 
@@ -21,12 +22,10 @@ export function dueItems(progress: Progress, sheetIds: string[], choice: DirChoi
     for (const dir of directionsFor(card, choice)) {
       const key = itemKey(card.id, dir);
       const stored = progress[key];
-      if (stored && isDue(stored, now)) items.push({ key, card, dir });
+      if (stored && isDueNow(key, stored, now)) items.push({ key, card, dir });
     }
   }
-  return items.sort(
-    (a, b) => new Date(progress[a.key].due).getTime() - new Date(progress[b.key].due).getTime(),
-  );
+  return items.sort((a, b) => dueAt(a.key, progress[a.key]) - dueAt(b.key, progress[b.key]));
 }
 
 /**
@@ -60,7 +59,7 @@ export function newCardsAvailable(progress: Progress, sheetIds: string[]): CardD
   return cardsInSheets(sheetIds).filter((c) => !isAdded(progress, c));
 }
 
-/** Introduce `count` unstudied cards chosen at random, in every direction they support. */
+/** Introduce `count` unstudied cards chosen at random (weighted by priority), in every direction they support. */
 export function addNewCards(
   progress: Progress,
   sheetIds: string[],
@@ -68,13 +67,13 @@ export function addNewCards(
   now: Date,
   random: () => number = Math.random,
 ): CardData[] {
-  // Pick at random from everything not yet studied in the chosen categories.
-  const pool = newCardsAvailable(progress, sheetIds);
-  for (let i = pool.length - 1; i > 0; i--) {
-    const j = Math.floor(random() * (i + 1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
-  }
-  const added = pool.slice(0, count);
+  // Weighted random pick from everything not yet studied in the chosen categories
+  // (each card draws random^(1/weight); the highest draws win).
+  const added = newCardsAvailable(progress, sheetIds)
+    .map((card) => ({ card, draw: random() ** (1 / pickWeight(card.id)) }))
+    .sort((a, b) => b.draw - a.draw)
+    .slice(0, count)
+    .map((x) => x.card);
   for (const card of added) for (const dir of card.directions) progress[itemKey(card.id, dir)] = newCard(now);
   return added;
 }
@@ -161,8 +160,8 @@ export class Session {
 /** Earliest upcoming due date across all studied items. */
 export function nextDue(progress: Progress, now: Date): Date | undefined {
   let best: number | undefined;
-  for (const s of Object.values(progress)) {
-    const t = new Date(s.due).getTime();
+  for (const [key, s] of Object.entries(progress)) {
+    const t = dueAt(key, s);
     if (t > now.getTime() && (best === undefined || t < best)) best = t;
   }
   return best === undefined ? undefined : new Date(best);

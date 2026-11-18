@@ -6,4 +6,6 @@ export const nav = {
   study: (_items: SessionItem[]) => {},
   stats: () => {},
   settings: () => {},
+  category: (_category: string) => {},
+  card: (_cardId: string) => {},
 };
