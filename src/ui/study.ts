@@ -113,8 +113,11 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
   const yHidden = () => stageH + 24;
   const yPrompt = () => stageH - H / 2;
   /** Face down: the whole card in view, with room for the category name above and "Tap to flip" below. */
-  const LABEL_H = 36;
-  const yFull = () => LABEL_H + Math.max(4, (stageH - H - 2 * LABEL_H) / 2);
+  const HINT_H = 44;
+  // "Category:" above the category name, or on the same line when the screen is short.
+  const twoLineLabel = () => stageH >= H + 56 + HINT_H + 8;
+  const labelH = () => (twoLineLabel() ? 56 : 36);
+  const yFull = () => labelH() + Math.max(4, (stageH - H - labelH() - HINT_H) / 2);
   const yReveal = () => {
     const gradesH = grades.offsetHeight || 96;
     return Math.max(4, (stage.getBoundingClientRect().height - gradesH - H) / 2);
@@ -124,7 +127,8 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
   const placeHint = () => {
     hint.style.top =
       phaseValue === 'faceDown' ? `${yFull() + H + 8}px` : `${Math.max(8, yPrompt() - 40)}px`;
-    catLabel.style.top = `${Math.max(0, yFull() - LABEL_H)}px`;
+    catLabel.style.top = `${Math.max(0, yFull() - labelH())}px`;
+    catLabel.classList.toggle('inline', !twoLineLabel());
   };
 
   function animate(el: HTMLElement, to: string, ms: number): Promise<void> {
@@ -195,7 +199,7 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
     gradeButtons.forEach((b) => b.classList.remove('suggested'));
     form.hidden = true; // the answer box appears once the card is flipped
     hint.textContent = '';
-    catLabel.textContent = '';
+    catLabel.replaceChildren();
     input.value = '';
     badge.hidden = item.card.type !== 'pronunciation';
     promptText.textContent =
@@ -228,7 +232,10 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
     placeHint();
     input.disabled = true;
     hint.textContent = t('tapToFlip');
-    catLabel.textContent = tAny(`cat_${item.card.category}`);
+    catLabel.replaceChildren(
+      h('span', { class: 'cat-caption' }, t('categoryLabel')),
+      h('span', { class: 'cat-name-big' }, tAny(`cat_${item.card.category}`)),
+    );
     pos.setAttribute('aria-label', t('tapToFlip'));
     updateBar();
   }
@@ -238,7 +245,7 @@ export function studyScreen(items: SessionItem[]): HTMLElement {
     const item = current();
     setPhase('flipping');
     hint.textContent = '';
-    catLabel.textContent = '';
+    catLabel.replaceChildren();
     if (settings.sounds) sounds.flip();
     // Show the answer box first so the half-card position accounts for it.
     if (isTypable(item)) form.hidden = false;
