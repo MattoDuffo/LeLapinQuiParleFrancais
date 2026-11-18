@@ -5,9 +5,9 @@ import { addNewCards, dueItems, newCardsAvailable, Session, sheetCounts, shuffle
 const now = new Date('2026-11-17T12:00:00Z');
 
 describe('cards', () => {
-  it('has 186 cards with 362 review directions', () => {
-    expect(cards).toHaveLength(186);
-    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(362);
+  it('has 212 cards with 414 review directions', () => {
+    expect(cards).toHaveLength(212);
+    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(414);
     expect(cards.filter((c) => c.type === 'pronunciation')).toHaveLength(10);
   });
 });
@@ -29,12 +29,12 @@ describe('adding and reviewing cards', () => {
     const categories = new Set<string>();
     for (let run = 0; run < 200; run++) {
       const p: Progress = {};
-      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'], 10, now);
+      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'], 10, now);
       firstPicks.add(added[0].id);
       added.forEach((c) => categories.add(c.category));
     }
     expect(firstPicks.size).toBeGreaterThan(50);
-    expect(categories.size).toBe(6);
+    expect(categories.size).toBe(7);
   });
 
   it('pronunciation cards only go French to English', () => {
@@ -109,7 +109,7 @@ describe('shuffleItems', () => {
 
   it('mixes cards within and across categories', () => {
     const p: Progress = {};
-    const all = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
+    const all = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
     addNewCards(p, all, 1000, now);
     const items = dueItems(p, all, 'fr-en', now);
     const firstCategories = new Set<string>();
@@ -122,7 +122,7 @@ describe('shuffleItems', () => {
       firstCards.add(s[0].key);
       for (let i = 1; i < s.length; i++) if (s[i].card.category !== s[i - 1].card.category) switches++;
     }
-    expect(firstCategories.size).toBe(6); // any category can come first
+    expect(firstCategories.size).toBe(7); // any category can come first
     expect(firstCards.size).toBeGreaterThan(100); // and any card within it
     // Categories are interleaved, not grouped: most neighbours differ.
     expect(switches / (runs * (items.length - 1))).toBeGreaterThan(0.6);
@@ -161,5 +161,23 @@ describe('number cards', () => {
     expect(numbers.filter((c) => c.sheet === 'K')).toHaveLength(6);
     expect(cardById.get('J-r1c3')?.french).toBe('Vingt'); // saved progress keeps its card
     expect(numbers.every((c) => c.backImage === 'assets/backs/Numbers.webp')).toBe(true);
+  });
+});
+
+describe('calendar cards', () => {
+  it('has the days, times of day, months and week words on two Calendar sheets', () => {
+    const cal = cards.filter((c) => c.category === 'Calendar');
+    expect(cal.map((c) => c.french)).toEqual([
+      'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche',
+      'Matin', 'Soir', 'Jour', 'Nuit',
+      'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août',
+      'Septembre', 'Octobre', 'Novembre', 'Décembre',
+      'Fin de semaine', 'Semaine', 'Mois',
+    ]);
+    expect(cal.filter((c) => c.sheet === 'L')).toHaveLength(18);
+    expect(cal.filter((c) => c.sheet === 'M')).toHaveLength(8);
+    expect(cardById.get('L-r1c1')?.english).toBe('Monday');
+    expect(cal.every((c) => c.directions.length === 2)).toBe(true);
+    expect(cal.every((c) => c.backImage === 'assets/backs/Calendar.webp')).toBe(true);
   });
 });
