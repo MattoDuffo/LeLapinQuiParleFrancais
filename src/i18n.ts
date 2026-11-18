@@ -3,6 +3,7 @@ import { state, type Lang } from './store';
 const en = {
   appName: 'Les Lapins',
   categories: 'Categories',
+  categoryLabel: 'Category:',
   cat_ErSound: 'The “ay” sound',
   cat_ESound: 'Accents é è ê ë',
   cat_OnSound: 'Nasal sounds',
@@ -98,6 +99,7 @@ type Key = keyof typeof en;
 const fr: Record<Key, string> = {
   appName: 'Les Lapins',
   categories: 'Catégories',
+  categoryLabel: 'Catégorie :',
   cat_ErSound: 'Le son « ay »',
   cat_ESound: 'Les accents é è ê ë',
   cat_OnSound: 'Les sons nasaux',

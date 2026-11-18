@@ -400,13 +400,15 @@ p { margin: 0; }
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 650;
-  line-height: 32px;
+  line-height: 30px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   pointer-events: none;
 }
 .cat-label:empty { display: none; }
+.cat-caption { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 700; line-height: 20px; color: #5e5348; }
+.cat-label.inline .cat-caption { display: inline; margin-right: 6px; }
 @keyframes hint-bob { 50% { translate: 0 -4px; } }
 
 .grades {
