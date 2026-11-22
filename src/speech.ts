@@ -4,13 +4,55 @@ const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
 
 export const speechAvailable = () => !!synth;
 
+const norm = (l: string) => l.replace('_', '-').toLowerCase();
+
+// iOS/macOS novelty voices that sound deliberately robotic or silly.
+const NOVELTY = new Set(
+  [
+    'Eddy', 'Flo', 'Grandma', 'Grandpa', 'Reed', 'Rocko', 'Sandy', 'Shelley',
+    'Albert', 'Bad News', 'Bahh', 'Bells', 'Boing', 'Bubbles', 'Cellos', 'Good News',
+    'Jester', 'Organ', 'Superstar', 'Trinoids', 'Whisper', 'Wobble', 'Zarvox',
+  ].map((n) => n.toLowerCase()),
+);
+
+/** Higher is better: premium > enhanced/Siri > default > compact; novelty voices last. */
+export function voiceQuality(v: Pick<SpeechSynthesisVoice, 'name' | 'voiceURI'>): number {
+  const uri = (v.voiceURI ?? '').toLowerCase();
+  const name = (v.name ?? '').toLowerCase();
+  const base = name.replace(/\s*\(.*\)\s*$/, '').trim();
+  if (uri.includes('eloquence') || uri.includes('novelty') || NOVELTY.has(base)) return -10;
+  if (uri.includes('premium') || name.includes('premium')) return 3;
+  if (uri.includes('enhanced') || name.includes('enhanced') || name.includes('amélioré')) return 2;
+  if (uri.includes('siri')) return 2;
+  if (uri.includes('compact')) return 0;
+  return 1;
+}
+
+/** Best voice for a language: exact match beats same language, then by quality. */
+export function bestVoice<V extends Pick<SpeechSynthesisVoice, 'name' | 'voiceURI' | 'lang'>>(
+  voices: readonly V[],
+  pref: string,
+): V | undefined {
+  const want = pref.toLowerCase();
+  const family = want.split('-')[0];
+  let best: V | undefined;
+  let bestScore = -Infinity;
+  for (const v of voices) {
+    const lang = norm(v.lang);
+    if (!lang.startsWith(family)) continue;
+    const q = voiceQuality(v);
+    // A good voice in the other accent beats a novelty voice in the preferred one.
+    const score = q * 10 + (lang === want ? 5 : 0);
+    if (score > bestScore) {
+      best = v;
+      bestScore = score;
+    }
+  }
+  return best;
+}
+
 function pickVoice(pref: string): SpeechSynthesisVoice | undefined {
-  const voices = synth?.getVoices() ?? [];
-  const norm = (l: string) => l.replace('_', '-').toLowerCase();
-  return (
-    voices.find((v) => norm(v.lang) === pref.toLowerCase()) ??
-    voices.find((v) => norm(v.lang).startsWith('fr'))
-  );
+  return bestVoice(synth?.getVoices() ?? [], pref);
 }
 
 /** Text to read: drop bracketed hints, "~", and read "Ils/Elles" as "Ils, Elles". */
@@ -80,8 +122,7 @@ export function speakFrench(text: string, pref: 'fr-CA' | 'fr-FR', english?: str
 function speakEnglish(text: string): void {
   if (!synth) return;
   const u = new SpeechSynthesisUtterance(text);
-  const norm = (l: string) => l.replace('_', '-').toLowerCase();
-  const voice = synth.getVoices().find((v) => norm(v.lang).startsWith('en'));
+  const voice = pickVoice('en-US');
   if (voice) u.voice = voice;
   u.lang = voice?.lang ?? 'en-US';
   u.rate = 0.9;
