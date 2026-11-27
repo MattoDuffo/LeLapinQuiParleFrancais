@@ -51,7 +51,7 @@ See `docs/PLAN-card-stats.md`.
     `priority.ts` the 1-3 star priority of each card
   - `ui/` screens: home, study (card animations), statistics, settings,
     `words.ts` the word list of a category and the page for one card
-- `data/cards.json` — the 223 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
+- `data/cards.json` — the 226 cards: `id`, `sheet`, `category`, `page`, `row`, `col`,
   `french`, `english`, `type` (`vocab` / `pronunciation`), `directions`,
   `frontImage`, `backImage`, and sometimes `note` / `answerLanguage`
 - `public/assets/` — card images, `public/icons/` — app icons

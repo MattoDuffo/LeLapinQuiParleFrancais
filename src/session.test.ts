@@ -5,9 +5,9 @@ import { addNewCards, dueItems, newCardsAvailable, Session, sheetCounts, shuffle
 const now = new Date('2026-11-17T12:00:00Z');
 
 describe('cards', () => {
-  it('has 223 cards with 436 review directions', () => {
-    expect(cards).toHaveLength(223);
-    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(436);
+  it('has 226 cards with 442 review directions', () => {
+    expect(cards).toHaveLength(226);
+    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(442);
     expect(cards.filter((c) => c.type === 'pronunciation')).toHaveLength(10);
   });
 });
@@ -189,6 +189,7 @@ describe('useful phrases', () => {
     expect(phrases.map((c) => c.french)).toEqual([
       'Je lui ai dit que...', "J'ai faim!", 'Nous allons en vacances', 'As-tu mon passeport?',
       "Pouvez-vous m'aider?", "Comment tu t'appelles?", 'Où est mon vin?',
+      "Qu'est-ce que c'est?", 'Comment vas-tu?', 'Je pense que...',
     ]);
     expect(phrases.every((c) => c.sheet === 'N')).toBe(true);
     expect(cardById.get('N-r2c1')?.english).toBe('Where is my wine?');

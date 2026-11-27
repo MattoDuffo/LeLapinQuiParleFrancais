@@ -74,6 +74,8 @@ PHRASES = [
     ("As-tu mon passeport?", "Do you have my passport?"),
     ("Pouvez-vous m'aider?", "Can you help me?"),
     ("Comment tu t'appelles?", "What's your name?"), ("Où est mon vin?", "Where is my wine?"),
+    ("Qu'est-ce que c'est?", "What is it?"), ("Comment vas-tu?", "How are you?"),
+    ("Je pense que...", "I think that..."),
 ]
 # id, first sheet letter (sheets A-H are the original printed sets), words, French title
 CATEGORIES = [
