@@ -5,9 +5,9 @@ import { addNewCards, dueItems, newCardsAvailable, Session, sheetCounts, shuffle
 const now = new Date('2026-11-17T12:00:00Z');
 
 describe('cards', () => {
-  it('has 216 cards with 422 review directions', () => {
-    expect(cards).toHaveLength(216);
-    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(422);
+  it('has 223 cards with 436 review directions', () => {
+    expect(cards).toHaveLength(223);
+    expect(cards.reduce((n, c) => n + c.directions.length, 0)).toBe(436);
     expect(cards.filter((c) => c.type === 'pronunciation')).toHaveLength(10);
   });
 });
@@ -29,12 +29,12 @@ describe('adding and reviewing cards', () => {
     const categories = new Set<string>();
     for (let run = 0; run < 200; run++) {
       const p: Progress = {};
-      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'], 10, now);
+      const added = addNewCards(p, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'], 10, now);
       firstPicks.add(added[0].id);
       added.forEach((c) => categories.add(c.category));
     }
     expect(firstPicks.size).toBeGreaterThan(50);
-    expect(categories.size).toBe(7);
+    expect(categories.size).toBe(8);
   });
 
   it('pronunciation cards only go French to English', () => {
@@ -109,7 +109,7 @@ describe('shuffleItems', () => {
 
   it('mixes cards within and across categories', () => {
     const p: Progress = {};
-    const all = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
+    const all = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'];
     addNewCards(p, all, 1000, now);
     const items = dueItems(p, all, 'fr-en', now);
     const firstCategories = new Set<string>();
@@ -122,7 +122,7 @@ describe('shuffleItems', () => {
       firstCards.add(s[0].key);
       for (let i = 1; i < s.length; i++) if (s[i].card.category !== s[i - 1].card.category) switches++;
     }
-    expect(firstCategories.size).toBe(7); // any category can come first
+    expect(firstCategories.size).toBe(8); // any category can come first
     expect(firstCards.size).toBeGreaterThan(100); // and any card within it
     // Categories are interleaved, not grouped: most neighbours differ.
     expect(switches / (runs * (items.length - 1))).toBeGreaterThan(0.6);
@@ -180,5 +180,19 @@ describe('calendar cards', () => {
     expect(cardById.get('L-r1c1')?.english).toBe('Monday');
     expect(cal.every((c) => c.directions.length === 2)).toBe(true);
     expect(cal.every((c) => c.backImage === 'assets/backs/Calendar.webp')).toBe(true);
+  });
+});
+
+describe('useful phrases', () => {
+  it('has the phrases on one Phrases sheet, both directions, with the café back', () => {
+    const phrases = cards.filter((c) => c.category === 'Phrases');
+    expect(phrases.map((c) => c.french)).toEqual([
+      'Je lui ai dit que...', "J'ai faim!", 'Nous allons en vacances', 'As-tu mon passeport?',
+      "Pouvez-vous m'aider?", "Comment tu t'appelles?", 'Où est mon vin?',
+    ]);
+    expect(phrases.every((c) => c.sheet === 'N')).toBe(true);
+    expect(cardById.get('N-r2c1')?.english).toBe('Where is my wine?');
+    expect(phrases.every((c) => c.directions.length === 2)).toBe(true);
+    expect(phrases.every((c) => c.backImage === 'assets/backs/Phrases.webp')).toBe(true);
   });
 });

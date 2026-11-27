@@ -121,6 +121,15 @@
       "back": "source-sheets/Back_CALENDAR.png",
       "backImage": "assets/backs/Calendar.webp",
       "description": "Le calendrier, page 2"
+    },
+    {
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "front": "source-sheets/Front_Phrases.png",
+      "back": "source-sheets/Back_PHRASES.png",
+      "backImage": "assets/backs/Phrases.webp",
+      "description": "Phrases utiles, page 1"
     }
   ],
   "cards": [
@@ -3789,6 +3798,125 @@
       ],
       "frontImage": "assets/cards/M-r2c6.webp",
       "backImage": "assets/backs/Calendar.webp"
+    },
+    {
+      "id": "N-r1c1",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 1,
+      "col": 1,
+      "french": "Je lui ai dit que...",
+      "english": "I told him/her that...",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r1c1.webp",
+      "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r1c2",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 1,
+      "col": 2,
+      "french": "J'ai faim!",
+      "english": "I'm hungry!",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r1c2.webp",
+      "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r1c3",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 1,
+      "col": 3,
+      "french": "Nous allons en vacances",
+      "english": "We're going on vacation",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r1c3.webp",
+      "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r1c4",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 1,
+      "col": 4,
+      "french": "As-tu mon passeport?",
+      "english": "Do you have my passport?",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r1c4.webp",
+      "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r1c5",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 1,
+      "col": 5,
+      "french": "Pouvez-vous m'aider?",
+      "english": "Can you help me?",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r1c5.webp",
+      "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r1c6",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 1,
+      "col": 6,
+      "french": "Comment tu t'appelles?",
+      "english": "What's your name?",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r1c6.webp",
+      "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r2c1",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 2,
+      "col": 1,
+      "french": "Où est mon vin?",
+      "english": "Where is my wine?",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r2c1.webp",
+      "backImage": "assets/backs/Phrases.webp"
     }
   ],
   "categories": [
@@ -3819,6 +3947,10 @@
     {
       "id": "Calendar",
       "pages": 2
+    },
+    {
+      "id": "Phrases",
+      "pages": 1
     }
   ]
 }
