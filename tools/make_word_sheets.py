@@ -1,5 +1,5 @@
 """Build the printable sheets and card data for the drawn word categories
-(Numbers, Calendar), which have no printed sheets of their own.
+(Numbers, Calendar, Phrases), which have no printed sheets of their own.
 
 For each category in CATEGORIES, writes sheets on the same 3 x 6 grid as the
 other printed sheets:
@@ -68,10 +68,18 @@ CALENDAR = [
     ("Mois", "Month"), ("Été", "Summer"), ("Automne", "Autumn"), ("Hiver", "Winter"),
     ("Printemps", "Spring"),
 ]
+PHRASES = [
+    ("Je lui ai dit que...", "I told him/her that..."), ("J'ai faim!", "I'm hungry!"),
+    ("Nous allons en vacances", "We're going on vacation"),
+    ("As-tu mon passeport?", "Do you have my passport?"),
+    ("Pouvez-vous m'aider?", "Can you help me?"),
+    ("Comment tu t'appelles?", "What's your name?"), ("Où est mon vin?", "Where is my wine?"),
+]
 # id, first sheet letter (sheets A-H are the original printed sets), words, French title
 CATEGORIES = [
     {"id": "Numbers", "first": "I", "words": NUMBERS, "title": "Les nombres"},   # I-K
     {"id": "Calendar", "first": "L", "words": CALENDAR, "title": "Le calendrier"},  # L-M
+    {"id": "Phrases", "first": "N", "words": PHRASES, "title": "Phrases utiles"},  # N-
 ]
 FRENCH_Y, ENGLISH_Y = 0.335, 0.745  # text centres as a fraction of card height
 FONT_SIZE, MAX_WIDTH = 92, 0.86
