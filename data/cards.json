@@ -3917,6 +3917,57 @@
       ],
       "frontImage": "assets/cards/N-r2c1.webp",
       "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r2c2",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 2,
+      "col": 2,
+      "french": "Qu'est-ce que c'est?",
+      "english": "What is it?",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r2c2.webp",
+      "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r2c3",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 2,
+      "col": 3,
+      "french": "Comment vas-tu?",
+      "english": "How are you?",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r2c3.webp",
+      "backImage": "assets/backs/Phrases.webp"
+    },
+    {
+      "id": "N-r2c4",
+      "sheet": "N",
+      "category": "Phrases",
+      "page": 1,
+      "row": 2,
+      "col": 4,
+      "french": "Je pense que...",
+      "english": "I think that...",
+      "type": "vocab",
+      "directions": [
+        "fr-en",
+        "en-fr"
+      ],
+      "frontImage": "assets/cards/N-r2c4.webp",
+      "backImage": "assets/backs/Phrases.webp"
     }
   ],
   "categories": [
